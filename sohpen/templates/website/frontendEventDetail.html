@@ -1,0 +1,101 @@
+{%extends 'layouts/frontend/base.html' %}
+{% load staticfiles%}
+{% block content %}
+<!-- breadcrumbs -->
+<section class="breadcrumbs">
+    <div class="breadcrumbs-wrapper">
+        <div class="container">
+            <div class="row">
+                <!-- page title -->
+                <div class="col-md-6 col-xs-6">
+                    <h4>{{event.title}}</h4>
+                </div>
+                <!-- .page title -->
+
+                <!-- breadcumbs -->
+                <div class="col-md-6 col-xs-6">
+                    <ol class="breadcrumb">
+                        <li><a href="#">Home</a>
+                        </li>
+                        <li class="active"><a href="{% url 'website:frontendEventDetail' event.slug %}">{{event.title}}</a>
+                        </li>
+                    </ol>
+                </div>
+                <!-- .breadcrumbs -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- blog posts & widgets -->
+<section class="no-bottom-margin">
+    <div class="container">
+        <div class="row">
+
+            <!-- paginate & posts -->
+            <div class="col-md-12">
+
+                <!-- post -->
+                <div class="posts">
+                    <div class="row">
+                        <div class="col-md-12">
+
+
+                            <div class="box-wrapper">
+                                <div class="box">
+
+                                    <!-- slider -->
+                                    <aside>
+
+                                        <div id="singleCarousel" class="carousel slide single-page normal" data-ride="carousel" data-interval="6000">
+                                            <!-- Wrapper for slides -->
+                                            <div class="carousel-inner">
+
+                                                <!-- 1 -->
+                                                <div class="item active">
+                                                    <img src="{{event.photo.url}}" alt="" title="" />
+                                                </div>
+                                                <!-- .1 -->
+                                            </div>
+                                            <!-- /Wrapper for slides .carousel-inner -->
+                                        </div>
+                                        <!-- carousel -->
+
+                                    </aside>
+                                    <!-- .slider -->
+
+                                    <!-- content -->
+                                    <div class="content">
+
+                                        <!-- title -->
+                                        <h2><a href="#">{{event.title}}</a>
+                                        </h2>
+                                        <!-- .title -->
+
+                                        <!-- meta -->
+                                        <p>
+                                            <span class="grey">published</span> <a href="#">2{{event.created_at|date}}</a>
+                                            <span class="grey">by</span> <a href="#">Admin</a>
+                                        </p>
+                                        <!-- .meta -->
+                                    </div>
+                                    <!-- content -->
+
+                                    <!-- content single -->
+                                    <div class="content single">
+                                        {{event.description|safe}}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- .post -->
+            </div>
+            <!-- .paginate & posts -->
+        </div>
+    </div>
+    <!-- .blog posts & widgets -->
+</section>
+
+{% endblock content %}

@@ -1,17 +1,53 @@
-from django.shortcuts import render
-from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView, ListView, DetailView
+from django.shortcuts import render, redirect
+from django.views.generic import TemplateView, CreateView, UpdateView, DeleteView, ListView, DetailView, View
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.urlresolvers import reverse_lazy, reverse
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
+
 
 from .forms import *  # Create your views here.
 
 
-class TestAdmin(TemplateView):
-    template_name = "testadmin.html"
+class Dashboard(TemplateView):
+    template_name = "dashboard.html"
 
 
 class TestFrontend(TemplateView):
     template_name = "testfront.html"
+
+
+class AdminLogInView(View):
+    def get(self, request):
+        form = LogInForm()
+        context = {
+            'form': form,
+        }
+        return render(request, 'website/adminLogIn.html', context)
+
+    def post(self, request):
+        form = LogInForm(request.POST or None)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user and user.is_active:
+                messages.success(request, "Logged In Successfully")
+                login(request, user)
+                return redirect('website:dashboard')
+        messages.warning(request, "Log In Failure")
+        context = {
+            'form': form,
+        }
+        return render(request, 'website/adminLogIn.html', context)
+
+
+class AdminLogOutView(View):
+    def get(self, request, *args, **kwargs):
+        if self.request.user.is_authenticated():
+            logout(request)
+        messages.success(request, "Logged Out Successfully")
+        return redirect('website:adminLogIn')
 
 
 class PageCreateView(SuccessMessageMixin, CreateView):
@@ -49,11 +85,6 @@ class PageListView(ListView):
 
     def get_queryset(self):
         return Page.objects.filter(deleted_at=None)
-
-
-class FrontendPageDetailView(DetailView):
-    model = Page
-    template_name = 'website/frontendPageDetail.html'
 
 
 class EventCreateView(SuccessMessageMixin, CreateView):
@@ -165,3 +196,31 @@ class SliderListView(ListView):
 
     def get_queryset(self):
         return Slider.objects.filter(deleted_at=None)
+
+
+class FrontendPageDetailView(DetailView):
+    model = Page
+    template_name = 'website/frontendPageDetail.html'
+
+
+class HomeView(View):
+    def get(self, request, *args, **kwargs):
+        context = {
+
+        }
+        return render(request, 'website/home.html', context)
+
+
+class FrontendEventListView(ListView):
+    model = Event
+    template_name = 'website/frontendEventList.html'
+    context_object_name = 'events'
+    paginate_by = 12
+
+    def get_queryset(self):
+        return Event.objects.filter(deleted_at=None)
+
+
+class FrontendEventDetailView(DetailView):
+    model = Event
+    template_name = 'website/frontendEventDetail.html'

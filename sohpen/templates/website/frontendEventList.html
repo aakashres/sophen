@@ -1,0 +1,201 @@
+{%extends 'layouts/frontend/base.html' %}
+{% load staticfiles%}
+{% block content %}
+<!-- breadcrumbs -->
+<section class="breadcrumbs">
+    <div class="breadcrumbs-wrapper">
+        <div class="container">
+            <div class="row">
+                <!-- page title -->
+                <div class="col-md-6 col-xs-6">
+                    <h4>Events</h4>
+                </div>
+                <!-- .page title -->
+
+                <!-- breadcumbs -->
+                <div class="col-md-6 col-xs-6">
+                    <ol class="breadcrumb">
+                        <li><a href="#">Home</a>
+                        </li>
+                        <li class="active"><a href="{% url 'website:frontendEventList' %}">Events</a>
+                        </li>
+                    </ol>
+                </div>
+                <!-- .breadcrumbs -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- blog posts & widgets -->
+<section>
+    <div class="container">
+        <div class="row">
+
+            <!-- paginate & posts -->
+            <div class="col-md-12">
+
+                <!-- pagination -->
+                <div class="paginate">
+                    <div class="row">
+
+                        <!-- prev & next -->
+                        <div class="col-md-2 col-xs-3">
+                            <ul class="list-unstyled list-inline">
+                                {% if page_obj.has_previous %}
+                                <li><a href="/events?page={{ page_obj.previous_page_number }}"><i class="fa fa-angle-left"></i></a>
+                                </li>
+                                {% else %}
+                                <li><a href=""><i class="fa fa-angle-left"></i></a>
+                                </li>
+                                {% endif %}
+                                {% if page_obj.has_next %}
+                                <li><a href="/events?page={{ page_obj.next_page_number }}"><i class="fa fa-angle-right"></i></a>
+                                </li>
+                                {% else %}
+                                <li><a href=""><i class="fa fa-angle-right"></i></a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <!-- .prev & next -->
+                        <!-- prev & next -->
+                        <div class="col-md-10 col-xs-9">
+                            <ul class="list-unstyled list-inline text-right">
+                                {% for pagenum in page_obj.paginator.page_range %}
+                                <li><a href="/events?page={{ pagenum }}" {% ifequal pagenum page_obj.number%}class="active"{% endifequal %}>{{ pagenum }} </a>
+                                </li>
+                                {% endfor%}
+                            </ul>
+                        </div>
+                        <!-- .prev & next -->
+
+                    </div>
+                </div>
+                <!-- .pagination -->
+
+                <!-- posts -->
+                <div class="posts">
+                    <div class="row">
+                    {% for event in events %}
+                        <!-- 1 -->
+                        <div class="col-md-4">
+                            <div class="box-wrapper">
+                                <div class="box">
+                                    <div class="latest-box">
+                                        <!-- .media -->
+                                        <div class="media">
+                                            <!-- overlay -->
+                                            <div class="overlay-wrapper">
+                                                <div class="overlay">
+                                                    <div class="overlay-content">
+                                                        <div class="content-hidden">
+                                                            <p>SHARE THIS CAUSE</p>
+                                                            <ul class="list-inline list-unstyled">
+                                                                <li><a href="#"><i class="fa fa-facebook-square"></i></a>
+                                                                </li>
+                                                                <li><a href="#"><i class="fa fa-twitter-square"></i></a>
+                                                                </li>
+                                                                <li><a href="#"><i class="fa fa-google-plus-square"></i></a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- .overlay -->
+
+                                            <!-- image -->
+                                            <a href="#">
+                                                <img src="{{event.photo.url}}" class="img-responsive" title="" alt="" />
+                                            </a>
+                                            <!-- image -->
+                                        </div>
+                                        <!-- .media -->
+
+                                        <!-- content -->
+                                        <div class="content-wrapper">
+                                            <div class="content">
+
+                                                <!-- cause meta -->
+                                                <div class="meta clearfix">
+                                                    <p class="pull-left" >Event</p>
+                                                    <a class="pull-right share-trigger" data-rel="tooltip" title="Share Cause" href="javascript:;"><i class="fa fa-share-alt"></i></a>
+                                                </div>
+                                                <!-- .cause meta -->
+
+                                                <!-- excerpt -->
+                                                <div class="excerpt">
+                                                    <h6><a href="{% url 'website:frontendEventDetail' event.slug %}">{{event.title}}</a>
+                                                    </h6>
+
+                                                </div>
+                                                <!-- .excerpt -->
+
+                                                <!-- rised slider meta -->
+                                                <div class="slider-meta clearfix">
+
+                                                </div>
+                                                <!-- .rised slider meta -->
+
+
+                                            </div>
+                                        </div>
+                                        <!-- .content -->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- .1 -->
+                        {% endfor%}
+
+                    </div>
+                </div>
+                <!-- .posts -->
+                <!-- pagination -->
+                <div class="paginate">
+                    <div class="row">
+
+                        <!-- prev & next -->
+                        <div class="col-md-2 col-xs-3">
+                            <ul class="list-unstyled list-inline">
+                                {% if page_obj.has_previous %}
+                                <li><a href="/events?page={{ page_obj.previous_page_number }}"><i class="fa fa-angle-left"></i></a>
+                                </li>
+                                {% else %}
+                                <li><a href=""><i class="fa fa-angle-left"></i></a>
+                                </li>
+                                {% endif %}
+                                {% if page_obj.has_next %}
+                                <li><a href="/events?page={{ page_obj.next_page_number }}"><i class="fa fa-angle-right"></i></a>
+                                </li>
+                                {% else %}
+                                <li><a href=""><i class="fa fa-angle-right"></i></a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <!-- .prev & next -->
+                        <!-- prev & next -->
+                        <div class="col-md-10 col-xs-9">
+                            <ul class="list-unstyled list-inline text-right">
+                                {% for pagenum in page_obj.paginator.page_range %}
+                                <li><a href="/events?page={{ pagenum }}" {% ifequal pagenum page_obj.number%}class="active"{% endifequal %}>{{ pagenum }} </a>
+                                </li>
+                                {% endfor%}
+                            </ul>
+                        </div>
+                        <!-- .prev & next -->
+
+                    </div>
+                </div>
+                <!-- .pagination -->
+
+            </div>
+            <!-- .paginate & posts -->
+        </div>
+    </div>
+    <!-- .blog posts & widgets -->
+</section>
+
+{% endblock content %}

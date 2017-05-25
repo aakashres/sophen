@@ -2,8 +2,13 @@ from django.conf.urls import url
 from .views import *
 
 urlpatterns = [
-    url(r'^testadmin/$', TestAdmin.as_view(), name="testadmin"),
     url(r'^testfront/$', TestFrontend.as_view(), name="test"),
+    url(r'^$', HomeView.as_view(), name="home"),
+
+
+    url(r'^sophenAdmin/dashboard/$', Dashboard.as_view(), name="dashboard"),
+    url(r'^sophenAdmin/login/$', AdminLogInView.as_view(), name='adminLogIn'),
+    url(r'^sophenAdmin/logout/$', AdminLogOutView.as_view(), name='adminLogOut'),
 
     url(r'^sophenAdmin/page/list/$',
         PageListView.as_view(), name='pageList'),
@@ -52,4 +57,8 @@ urlpatterns = [
 
     url(r'^page/(?P<slug>[\w-]+)/$',
         FrontendPageDetailView.as_view(), name='frontendPageDetail'),
+    url(r'^event/(?P<slug>[\w-]+)/$',
+        FrontendEventDetailView.as_view(), name='frontendEventDetail'),
+    url(r'^events/$',
+        FrontendEventListView.as_view(), name='frontendEventList'),
 ]

@@ -1,0 +1,338 @@
+{%extends 'layouts/frontend/base.html' %}
+{% load staticfiles%}
+{% block content %}
+    <!-- slider -->
+    <aside>
+
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+
+
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+            </ol>
+
+
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+
+                <!-- 1 -->
+                <div class="item active">
+
+                    <img src="{% static 'frontend/images/slide_1.png' %}" alt="" title="" />
+
+                    <div class="carousel-caption">
+                        <div class="carousel-content-wrapper">
+                            <div class="carousel-content slide-content">
+                                <h3>Charity Fundrising</h3>
+                                <p>Donate to help everyone who needs help</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- .1 -->
+
+                <!-- Slide 2 -->
+                <div class="item">
+
+                    <img src="{% static 'frontend/images/slide_2.png' %}" alt="" title="" />
+
+                    <div class="carousel-caption">
+                        <div class="carousel-content-wrapper slide-content">
+                            <div class="carousel-content">
+                                <h3>Give Them Hope</h3>
+                                <p>The charity that is a trifle to us can be precious to others</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.carousel-caption -->
+                </div>
+                <!-- /Slide2 -->
+
+                <!-- Slide 3 -->
+                <div class="item ">
+
+                    <img src="{% static 'frontend/images/slide_3.png' %}" alt="" title="" />
+
+                    <div class="carousel-caption">
+                        <div class="carousel-content-wrapper">
+                            <div class="carousel-content slide-content">
+                                <h3>Provide Better Future</h3>
+                                <p>Anticipate charity by preventing poverty</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.carousel-caption -->
+                </div>
+                <!-- /Slide3 -->
+
+                <!-- Slide 4 -->
+                <div class="item">
+
+                    <img src="{% static 'frontend/images/slide_4.png' %}" alt="" title="" />
+
+                    <div class="carousel-caption">
+                        <div class="carousel-content-wrapper">
+                            <div class="carousel-content slide-content">
+                                <h3>More Love</h3>
+                                <p>Charity is willingly given from the heart</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.carousel-caption -->
+                </div>
+                <!-- /Slide4 -->
+
+            </div>
+            <!-- /Wrapper for slides .carousel-inner -->
+
+            <!-- Controls -->
+            <div class="control-box">
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="fa fa-angle-right"></i></a>
+            </div>
+            <!-- /.control-box -->
+
+
+        </div>
+        <!-- /#myCarousel -->
+
+    </aside>
+    <!-- .slider -->
+    <!-- upcoming event -->
+    <section class="up-event">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- box -->
+                    <div class="box-wrapper">
+                        <div class="box clearfix">
+
+                            <!-- upcoming event -->
+                            <div class="upcoming-event">
+                                <div class="event-icon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <div class="event-title">
+                                    <h3><a href="event-single.html">International Conference</a>
+                                    </h3>
+                                </div>
+
+                                <div class="event-counter pull-right">
+
+                                    <ul class="countdown list-unstyled list-inline text-center">
+                                        <li>
+                                            <p class="days_ref">Days</p>
+                                            <span class="days">00</span>
+
+                                        </li>
+
+                                        <li>
+                                            <p class="hours_ref">Hours</p>
+                                            <span class="hours">00</span>
+
+                                        </li>
+
+                                        <li>
+                                            <p class="minutes_ref">Minutes</p>
+                                            <span class="minutes">00</span>
+
+                                        </li>
+
+                                        <li>
+                                            <p class="seconds_ref">Seconds</p>
+                                            <span class="seconds">00</span>
+
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- .upcoming event -->
+
+                        </div>
+                    </div>
+                    <!-- .box -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- .upcoming-event -->
+    <!-- intro -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="promo-box heading text-center">
+                        <h2>Introduction</h2>
+                        <hr />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <!-- content -->
+                    <div class="content-wrapper">
+                        <div class="content">
+                            <!-- excerpt -->
+                            <div class="excerpt">
+                                <p>Water sources are constantly drying up causing sever scarcity of drinking water
+                                due to increased urbanization and industralization. The effect of pollution, contamination and environmental degradation on long term quality of life is of growing concern. These issues related to water, sanitation and hygiene must be addressed and highlighted to raise awareness among the people, society and goverment.</p>
+                                <p>Society of Public Health Engineers, Nepal(SOPHEN) was estabilshed in 1990 AD (2047 B.S.) as an independent professional organization of water, sanitation and public helth engineers. At present SOPHEN has nearly 400 members and most of them are life members of the Society.</p>
+                                <p>SOPHEN is governed by Executive Committee of  members elected by the general members of the society. The Executive Committee supported by various and directives of the General Body executes day to day function.</p>
+                                <p>Some of the major responsibilities of SOPHEN include the enhancement of the technical and professional competency of the members; work for the protection og the basic professional rights of its members and the support for the goverment and other agencies in the formulation of the policies or strategies and implementation of program in the area of public health.</p>
+                                <p>SOPHEN is committed to carry out various professional activities that are intended to bring qualitative results to remove the sanitary and environmental conditions of the country . It aims to work in association with other professional bodies in the area of water supply, sanitation, public health and environment.</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="promo-box heading text-center">
+                        <h2>Vison</h2>
+                        <hr />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <!-- content -->
+                    <div class="content-wrapper">
+                        <div class="content">
+                            <!-- excerpt -->
+                            <div class="excerpt">
+                                <p>SOPHEN is established with the vison of:</p>
+                                <ol>
+                                <li> protecting professional rights.</li>
+                                <li>enhancing professional development.</li>
+                                <li>improving technology by providing forum for knowledge sharing among professional working in the field of public health and</li>
+                                <li>overall development of the country through progress Public Health engineering sector thereby creating clean, green, open and dynamic society in which people have access to safe, adequate water and sanitation in healthy environment.</li>
+                                </ol>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="promo-box heading text-center">
+                        <h2>Mission</h2>
+                        <hr />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <!-- content -->
+                    <div class="content-wrapper">
+                        <div class="content">
+                            <!-- excerpt -->
+                            <div class="excerpt">
+                                <p>The mission of SOPHEN is to contribue towards the enhancement of an inproved urban and rular environment.</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="promo-box heading text-center">
+                        <h2>Objectives</h2>
+                        <hr />
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <!-- content -->
+                    <div class="content-wrapper">
+                        <div class="content">
+                            <!-- excerpt -->
+                            <div class="excerpt">
+                                <p>SOPHEN has the following objectives:</p>
+                                <ul>
+                                <li>Dissemintation of state of art technology among engineers, practioners, policymakers and communities.</li>
+                                <li>Capacity building of engineers through various training, seminars, talk programs and workshop etc.</li>
+                                <li>Establishment of linkage with national and international agencies and joint effort towards Research and Development (R&D) works.</li>
+                                <li>Help raise awareness among stakeholders regarding water, sanitation and environment.</li>
+                                <li>Support Goverment to formulate and implement the policies and strategies for development of water and sanitation sector.</li>
+                                <li>Provide technical counselling services as and when required.</li>
+                                <li>Organizing exchange visits (Local and International)</li>
+                                <li>Conducting and supporting research and development program activities.</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="promo-box heading text-center">
+                            <h2>Activities</h2>
+                            <hr />
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <!-- content -->
+                        <div class="content-wrapper">
+                            <div class="content">
+                                <!-- excerpt -->
+                                <div class="excerpt">
+                                    <ul>
+                                    <li>Celebrating World Water Day.</li>
+                                    <li>Celebrating World Environment Day.</li>
+                                    <li>Celebrating World Toiled Day.</li>
+                                    <li>Conduct Seminars, Workshops, Talk Programs and Public Awareness Programs.</li>
+                                    <li>Annual publication of technical journal "SOPHEN"</li>
+                                    <li>Design and implenent water, sanitation and environmental projects.</li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="promo-box heading text-center">
+                            <h2>Eligibility for Membership</h2>
+                            <hr />
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <!-- content -->
+                        <div class="content-wrapper">
+                            <div class="content">
+                                <!-- excerpt -->
+                                <div class="excerpt">
+                                    <h3>General Member</h3>
+                                    <p>B. Eng. form a recognized university, institutions with three years working ecperince in the field of Water, Sanitation and Environment Engineering, or A post-graduate degree in Water or Environmental or Sanitary Engineering form any recognized institution/university.</p>
+                                    <h3>Associate Member</h3>
+                                    <p>Any individual not having the required academic qualification or any institution that has contirbuted significantly in the fiedl of sanitary/environmental engineering could be granted an Associate Members as approved by Executive Council of SOPHEN. However, the Associate member will not have any voting rights.</p>
+                                    <h3>Honorary Member</h3>
+                                    <p>The SOPHEN Executive Council may provide Honorary Membership to any individual of institution for its outstanding contributions rendered in the overall development of our society and related fields.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- .intro -->
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript">
+/* COUNT DOWN */
+    $('.countdown').downCount({
+        date: '09/09/2018 12:00:00',
+        offset: +10
+    }, function() {
+
+    });
+</script>
+{% endblock extra_js %}
