@@ -1,0 +1,161 @@
+{%extends 'layouts/frontend/base.html' %}
+{% load staticfiles%}
+{% block content %}
+<!-- breadcrumbs -->
+<section class="breadcrumbs">
+    <div class="breadcrumbs-wrapper">
+        <div class="container">
+            <div class="row">
+                <!-- page title -->
+                <div class="col-md-6 col-xs-6">
+                    <h4>Contact Us</h4>
+                </div>
+                <!-- .page title -->
+
+                <!-- breadcumbs -->
+                <div class="col-md-6 col-xs-6">
+                    <ol class="breadcrumb">
+                        <li><a href="{% url 'website:home' %}">Home</a>
+                        </li>
+                        <li class="active"><a href="{% url 'website:contact' %}">Contact Us</a>
+                        </li>
+                    </ol>
+                </div>
+                <!-- .breadcrumbs -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- map -->
+<section>
+    <div class="container">
+        <div class="row">
+
+            <!-- map -->
+            <div class="col-md-12">
+                <div class="box-wrapper">
+                    <div class="box" style="height:650px">
+                        <div class="map">
+                            <div class="embed-container ">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d914.2455376975319!2d85.32356565346346!3d27.72834042497272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1917f792e191%3A0x6732bf97b737690!2sDepartment+of+Water+Supply+and+Sewerage!5e0!3m2!1sen!2sus!4v1495709194163"></iframe>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- .map -->
+
+        </div>
+    </div>
+</section>
+<!-- .map -->
+
+<!-- contact form & additional info -->
+<section>
+    <div class="container">
+        <div class="row">
+
+            <!-- contact form -->
+            <div class="col-md-8">
+                <div class="widget">
+                    <div class="box-wrapper">
+                        <div class="box">
+
+                            <!-- heading -->
+                            <div class="form-heading">
+                                <h5>Contact Us Form</h5>
+
+                            </div>
+                            <!-- heading -->
+
+                            <!-- border -->
+                            <hr />
+                            <!-- .border -->
+
+                            <!-- form -->
+                            <div class="content">
+                                <form class="form-horizontal" method="POST" action=".">
+                                {% csrf_token %}
+                                    <!-- widget box -->
+                                    <div class="widget-box">
+                                        <div class="form-group">
+                                            <label>Your name</label>
+                                            {{form.name}}
+                                        </div>
+                                    </div>
+                                    <!-- .widget box -->
+
+                                    <!-- widget box -->
+                                    <div class="widget-box">
+                                        <div class="form-group">
+                                            <label>Your Subject</label>
+                                            {{form.subject}}
+                                        </div>
+                                    </div>
+                                    <!-- .widget box -->
+
+                                    <!-- widget box -->
+                                    <div class="widget-box">
+                                        <div class="form-group">
+                                            <label>Your message</label>
+                                            {{form.message}}
+                                        </div>
+                                    </div>
+                                    <!-- .widget box -->
+
+                                    <!-- widget box -->
+                                    <div class="widget-box">
+                                        <div class="form-group">
+                                            <button class="button-normal full white" type="submit">Send Message</button>
+                                        </div>
+                                    </div>
+                                    <!-- .widget-box -->
+
+                                </form>
+                            </div>
+                            <!-- .form -->
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- .contact form -->
+
+            <!-- additional info -->
+            <div class="col-md-4">
+                <div class="box-wrapper">
+                    <div class="box">
+                        <div class="form-heading">
+                            <h5>Additional Info</h5>
+                        </div>
+                        <hr />
+                        <div class="content">
+                            <p>Society of Public Health Engineers, Nepal</p>
+                            <br />
+                            <p>Address:
+                                <span class="pull-right grey">Panipokhari, Kathmandu Nepal</span>
+                            </p>
+                            <p>Phone:
+                                <span class="pull-right grey">+977-1-4006650, 016208276</span>
+                            </p>
+                            <p>Email:
+                                <span class="pull-right grey">info@sophen.org.np</span>
+                            </p>
+                            <p>Web:
+                                <span class="pull-right grey">www.sophen.org.np</span>
+                            </p>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- additional info -->
+
+        </div>
+    </div>
+</section>
+<!-- .contact form & additional info -->
+{% endblock content %}

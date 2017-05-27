@@ -15,6 +15,12 @@
     SOPHEN
     {% endblock title %}
     </title>
+    <style type="text/css">
+        .passive{
+            border-style: solid;
+            border-color: #00acc1;
+        }
+    </style>
     {% include 'layouts/frontend/include/head.html' %}
     {% block extra_head %}
     {% endblock extra_head%}
@@ -48,25 +54,6 @@
                             </button>
                         </div>
                         <!-- trigger -->
-
-                        <!-- menu list -->
-                        <nav class="pt-nav">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-globe"></i> English <i class="fa fa-angle-down"></i></a>
-
-                                    <ul>
-                                        <li><a href="#">Netherland</a>
-                                        </li>
-                                        <li><a href="#">France</a>
-                                        </li>
-                                        <li><a href="#">Russian</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <!-- .menu list -->
-                        </nav>
-
                     </div>
                 </div>
                 <!-- .languages -->
@@ -78,9 +65,9 @@
                         <!-- menu list -->
                         <nav>
                             <ul class="list-inline">
-                                <li><a href="#"><i class="fa fa-phone"></i> +380 (0)222 3543</a>
+                                <li><a href="#"><i class="fa fa-phone"></i> +977-1-4006650, 01-6208276</a>
                                 </li>
-                                <li><a href="#"><i class="fa fa-envelope-o"></i> loremim@dolorsit.com</a>
+                                <li><a href="mailto:info@sophen.org.np"><i class="fa fa-envelope-o"></i>info@sophen.org.np</a>
                                 </li>
                             </ul>
                             <!-- .menu list -->
@@ -111,6 +98,8 @@
                 </div>
                 <!-- .logo -->
 
+
+
                 <!-- main nav -->
                 <div class="col-md-10">
                     <div class="main-nav nav-root">
@@ -127,156 +116,27 @@
 
                             <!-- menu list -->
                             <ul class="clearfix">
-                                <li><a href="index-2.html">Home</a>
-                                    <ul>
-                                        <li><a href="index.html">Home 1</a>
-                                        </li>
-                                        <li><a href="index-1.html">Home 2</a>
-                                        </li>
-                                        <li><a href="faq.html">FAQ</a>
-                                        </li>
-                                        <li><a href="grid.html">Grid</a>
-                                        </li>
-                                        <li><a href="#">Pages</a>
-                                            <ul>
-                                                <li>
-                                                    <a href="full-width.html">Full Width Boxed</a>
+
+                                {% for child in menu_root.not_deleted_children %}
+                                    {% if request.path|cut:"/" == child.url|cut:"/" %}
+                                        <li class="passive">
+                                    {% else %}
+                                        <li>
+                                    {% endif %}
+                                    {% if child.not_deleted_children %}
+                                            <a href="{{ child.url }}">{{ child.title }}</a>
+                                            <ul class="sub-menu">
+                                            {% for sub_child in child.not_deleted_children %}
+                                                <li  style="">
+                                                    <a href="{{ sub_child.url }}">{{ sub_child.title }}</a>
                                                 </li>
-                                                <li>
-                                                    <a href="full-width-opened.html">Full Width Opened</a>
-                                                </li>
-                                                <li>
-                                                    <a href="left-sidebar.html">Left Sidebar Boxed</a>
-                                                </li>
-                                                <li>
-                                                    <a href="left-sidebar-opened.html">Left Sidebar Opened</a>
-                                                </li>
-                                                <li>
-                                                    <a href="right-sidebar.html">Right Sidebar Boxed</a>
-                                                </li>
-                                                <li>
-                                                    <a href="right-sidebar-opened.html">Right Sidebar Opened</a>
-                                                </li>
+                                            {% endfor %}
                                             </ul>
+                                    {% else %}
+                                            <a href="{{ child.url }}">{{ child.title }}</a>
+                                    {% endif %}
                                         </li>
-                                        <li><a href="typography.html">Typography</a>
-                                        </li>
-                                        <li><a href="elements.html">Elements</a>
-                                        </li>
-                                        <li><a href="about.html">About</a>
-                                        </li>
-                                        <li><a href="404.html">404</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a href="causes.html">Causes</a>
-                                    <ul>
-                                        <li><a href="cause-single.html">Cause Single</a>
-                                        </li>
-                                        <li><a href="causes-full-3.html">Causes Full 3 Col</a>
-                                        </li>
-                                        <li><a href="causes-full-col-4.html">Causes Full 4 Col</a>
-                                        </li>
-                                        <li><a href="causes-full-col-6.html">Causes Full 6 Col</a>
-                                        </li>
-                                        <li><a href="causes.html">Causes Sidebar 3 Col</a>
-                                        </li>
-                                        <li><a href="causes-sidebar-col-6.html">Causes Sidebar 6 Col</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a href="events.html">Events</a>
-                                    <ul>
-                                        <li><a href="event-single.html">Event Single</a>
-                                        </li>
-                                        <li><a href="events-calendar-full.html">Events Full Calendar</a>
-                                        </li>
-                                        <li><a href="events-calendar.html">Events Sidebar Calendar</a>
-                                        </li>
-                                        <li><a href="events-col-3.html">Events Full 3 Col</a>
-                                        </li>
-                                        <li><a href="events-col-6.html">Events Full 6 Col</a>
-                                        </li>
-                                        <li><a href="events.html">Events Sidebar 3 Col</a>
-                                        </li>
-                                        <li><a href="events-sidebar-col-6.html">Events Sidebar 6 Col</a>
-                                        </li>
-                                        <li><a href="events-no-map-col-3.html">Events No Map 3 Col</a>
-                                        </li>
-                                        <li><a href="events-no-map.html">Events No Map</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a href="gallery-content-col-4.html">Gallery</a>
-                                    <ul>
-                                        <li><a href="gallery-content-sidebar-col-3.html">Caption Sidebar 3 Col</a>
-                                        </li>
-                                        <li><a href="gallery-content-sidebar-col-4.html">Caption Sidebar 4 Col</a>
-                                        </li>
-                                        <li><a href="gallery-content-sidebar-col-6.html">Caption Sidebar 6 Col</a>
-                                        </li>
-                                        <li><a href="gallery-content-col-4.html">Caption Full 4 Col</a>
-                                        </li>
-                                        <li><a href="gallery-caption.html">Caption Full 6 Col</a>
-                                        </li>
-                                        <li><a href="gallery-sidebar-col-3.html">Sidebar 3 Col</a>
-                                        </li>
-                                        <li><a href="gallery-sidebar-col-4.html">Sidebar 4 Col</a>
-                                        </li>
-                                        <li><a href="gallery-sidebar-col-6.html">Sidebar 6 Col</a>
-                                        </li>
-                                        <li><a href="gallery-col-4.html">Full 4 Col</a>
-                                        </li>
-                                        <li><a href="gallery-col-6.html">Full 6 Col</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a href="shop.html">Shop</a>
-                                    <ul>
-                                        <li><a href="shop-single.html">Shop Single</a>
-                                        </li>
-                                        <li><a href="shop.html">Shop Sidebar 6 Col</a>
-                                        </li>
-                                        <li><a href="shop-full-col-4.html">Shop Full 4 Col</a>
-                                        </li>
-                                        <li><a href="shop-full-col-6.html">Shop Full 6 Col</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a href="blog.html">Blog</a>
-                                    <ul>
-                                        <li><a href="blog-single.html">Blog Single</a>
-                                        </li>
-                                        <li><a href="blog.html">Blog Sidebar 3 Col</a>
-                                        </li>
-                                        <li><a href="blog-sidebar-col-6.html">Blog Sidebar 6 Col</a>
-                                        </li>
-                                        <li><a href="blog-full-col-3.html">Blog Full 3 Col</a>
-                                        </li>
-                                        <li><a href="blog-full-col-4.html">Blog Full 4 Col</a>
-                                        </li>
-                                        <li><a href="blog-full-col-6.html">Blog Full 6 Col</a>
-                                        </li>
-                                        <li><a href="blog-content-col-3-sidebar.html">Content Sidebar 3 Col</a>
-                                        </li>
-                                        <li><a href="blog-content-sidebar-col-6.html">Content Sidebar 6 Col</a>
-                                        </li>
-                                        <li><a href="blog-content-full-col-3.html">Content Full 3 Col</a>
-                                        </li>
-                                        <li><a href="blog-content-full-col-4.html">Content Full 4 Col</a>
-                                        </li>
-                                        <li><a href="blog-content-full-col-6.html">Content Full 6 Col</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact.html">Contact</a>
-                                    <ul>
-                                        <li><a href="contact-full.html">Contact Full</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="button"><a href="donate.html">Donate</a>
-                                </li>
+                                {% endfor %}
                             </ul>
                             <!-- .menu list -->
 

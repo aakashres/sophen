@@ -1,0 +1,155 @@
+{%extends 'layouts/frontend/base.html' %}
+{% load staticfiles%}
+{% block content %}
+<!-- breadcrumbs -->
+<section class="breadcrumbs">
+    <div class="breadcrumbs-wrapper">
+        <div class="container">
+            <div class="row">
+                <!-- page title -->
+                <div class="col-md-6 col-xs-6">
+                    <h4>Gallery</h4>
+                </div>
+                <!-- .page title -->
+
+                <!-- breadcumbs -->
+                <div class="col-md-6 col-xs-6">
+                    <ol class="breadcrumb">
+                        <li><a href="{% url 'website:home' %}">Home</a>
+                        </li>
+                        <li class="active"><a href="{% url 'website:frontendGalleryList' %}">Gallery</a>
+                        </li>
+                    </ol>
+                </div>
+                <!-- .breadcrumbs -->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- blog posts & widgets -->
+<section>
+    <div class="container">
+        <div class="row">
+            <!-- paginate & posts -->
+            <div class="col-md-12">
+                <!-- pagination -->
+                <div class="paginate">
+                    <div class="row">
+
+                        <!-- prev & next -->
+                        <div class="col-md-2 col-xs-3">
+                            <ul class="list-unstyled list-inline">
+                                {% if page_obj.has_previous %}
+                                <li><a href="/gallery?page={{ page_obj.previous_page_number }}"><i class="fa fa-angle-left"></i></a>
+                                </li>
+                                {% else %}
+                                <li><a href=""><i class="fa fa-angle-left"></i></a>
+                                </li>
+                                {% endif %}
+                                {% if page_obj.has_next %}
+                                <li><a href="/gallery?page={{ page_obj.next_page_number }}"><i class="fa fa-angle-right"></i></a>
+                                </li>
+                                {% else %}
+                                <li><a href=""><i class="fa fa-angle-right"></i></a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <!-- .prev & next -->
+                        <!-- prev & next -->
+                        <div class="col-md-10 col-xs-9">
+                            <ul class="list-unstyled list-inline text-right">
+                                {% for pagenum in page_obj.paginator.page_range %}
+                                <li><a href="/gallery?page={{ pagenum }}" {% ifequal pagenum page_obj.number%}class="active"{% endifequal %}>{{ pagenum }} </a>
+                                </li>
+                                {% endfor%}
+                            </ul>
+                        </div>
+                        <!-- .prev & next -->
+
+                    </div>
+                </div>
+                <!-- .pagination -->
+                <!-- posts -->
+                <div class="posts">
+                    <!-- gallery wrapper -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- a -->
+                            <div class="row gallery">
+                                {% for photo in photos %}
+                                <div class="col-md-3 col-xs-6">
+                                    <div class="box-wrapper">
+                                        <div class="box">
+                                            <div class="media">
+                                                <a href="{{photo.photo.url}}" data-toggle="lightbox" data-title="{{photo.caption}}" data-gallery="multiimages">
+                                                    <img src="{{photo.photo.url}}" title="" alt="" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+
+                            </div>
+                            <!-- .b -->
+
+                        </div>
+                    </div>
+                    <!-- .2 -->
+
+                </div>
+                <!-- .gallery -->
+
+
+            </div>
+        </div>
+        <!-- .posts -->
+
+        <!-- pagination -->
+                <div class="paginate">
+                    <div class="row">
+
+                        <!-- prev & next -->
+                        <div class="col-md-2 col-xs-3">
+                            <ul class="list-unstyled list-inline">
+                                {% if page_obj.has_previous %}
+                                <li><a href="/gallery?page={{ page_obj.previous_page_number }}"><i class="fa fa-angle-left"></i></a>
+                                </li>
+                                {% else %}
+                                <li><a href=""><i class="fa fa-angle-left"></i></a>
+                                </li>
+                                {% endif %}
+                                {% if page_obj.has_next %}
+                                <li><a href="/gallery?page={{ page_obj.next_page_number }}"><i class="fa fa-angle-right"></i></a>
+                                </li>
+                                {% else %}
+                                <li><a href=""><i class="fa fa-angle-right"></i></a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <!-- .prev & next -->
+                        <!-- prev & next -->
+                        <div class="col-md-10 col-xs-9">
+                            <ul class="list-unstyled list-inline text-right">
+                                {% for pagenum in page_obj.paginator.page_range %}
+                                <li><a href="/gallery?page={{ pagenum }}" {% ifequal pagenum page_obj.number%}class="active"{% endifequal %}>{{ pagenum }} </a>
+                                </li>
+                                {% endfor%}
+                            </ul>
+                        </div>
+                        <!-- .prev & next -->
+
+                    </div>
+                </div>
+                <!-- .pagination -->
+
+    </div>
+    <!-- .paginate & posts -->
+
+</section>
+<!-- .blog posts & widgets -->
+{% endblock content %}

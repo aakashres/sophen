@@ -44,10 +44,10 @@
                 <ul class="header-nav header-nav-profile">
                     <li class="dropdown">
                         <a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
-                            <img src="{% static 'assets/img/avatar1.jpg' %}" alt="" />
+                            <img src="{% static 'user.jpg' %}" alt="" />
                             <span class="profile-info">
                                 {{request.user.get_full_name}}
-                                <small> Administrator</small>
+                                <small> {{request.user.username}}</small>
                             </span>
                         </a>
                         <ul class="dropdown-menu animation-dock">
@@ -109,7 +109,7 @@
             </div>
             <div class="expanded">
                 <a href="#">
-                    <span class="text-lg text-bold text-primary ">SHARIFA&nbsp;ADMIN</span>
+                    <span class="text-lg text-bold text-primary ">SOPHEN&nbsp;ADMIN</span>
                 </a>
             </div>
         </div>
@@ -130,6 +130,24 @@
                     <a href="{% url 'website:eventList'%}">
                         <div class="gui-icon"><i class="fa fa-calendar"></i></div>
                         <span class="title">Event</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <li id="file">
+                    <a href="{% url 'website:fileList'%}">
+                        <div class="gui-icon"><i class="fa fa-file-pdf-o"></i></div>
+                        <span class="title">File</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <li id="gallery">
+                    <a href="{% url 'website:galleryList'%}">
+                        <div class="gui-icon"><i class="fa fa-image"></i></div>
+                        <span class="title">Gallery</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <li id="member">
+                    <a href="{% url 'website:memberList'%}">
+                        <div class="gui-icon"><i class="fa fa-users"></i></div>
+                        <span class="title">Member</span>
                     </a>
                 </li><!--end /menu-li -->
                 <li id="menu">
@@ -159,7 +177,7 @@
 
             <div class="menubar-foot-panel">
                 <small class="no-linebreak hidden-folded">
-                    <span class="opacity-75">Copyright &copy; 2016</span> <strong>Prixa</strong>
+                    <span class="opacity-75">Powered By</span> <strong>Prixa</strong>
                 </small>
             </div>
         </div><!--end .menubar-scroll-panel-->

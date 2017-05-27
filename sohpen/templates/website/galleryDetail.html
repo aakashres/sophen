@@ -1,7 +1,7 @@
 {% extends 'layouts/admin/base.html' %}
 
 {% block head_title %}
-    {{block.super}} | Gallery Detail
+    {{block.super}} | Gallerys Detail
 {% endblock %}
 
 {% block content %}
@@ -11,8 +11,7 @@
         <div class="row style-primary">
             <div class="col-sm-12">
                 <div class="card-body style-default-dark">
-                    <h2><strong>Label:</strong> {{slider.label}}</h2>
-                    <small>Active:{%if slider.active %}True{% else %}False{%endif%}</small>
+                    <h2><strong>Caption:</strong> {{gallery.caption}}</h2>
                     <div class="text-default-light">Posted by Admin</div>
                 </div>
             </div>
@@ -23,7 +22,7 @@
             <div class="col-md-12">
                 <article class="style-default-bright">
                     <div>
-                        <img class="img-responsive" src="{{slider.photo.url}}" alt="" />
+                        <img class="img-responsive" src="{{gallery.photo.url}}" alt="" />
                     </div>
                 </article>
             </div><!--end .col -->

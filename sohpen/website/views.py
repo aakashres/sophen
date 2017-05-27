@@ -3,18 +3,58 @@ from django.views.generic import TemplateView, CreateView, UpdateView, DeleteVie
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.urlresolvers import reverse_lazy, reverse
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from django.contrib import messages
+from .forms import *
 
 
-from .forms import *  # Create your views here.
+class HomeMixin(object):
+    def get_context_data(self, **kwargs):
+        context = super(HomeMixin, self).get_context_data(**kwargs)
+        context['menu_root'] = Menu.get_root()
+        return context
 
 
 class Dashboard(TemplateView):
     template_name = "dashboard.html"
 
 
-class TestFrontend(TemplateView):
+class TestFrontend(HomeMixin, TemplateView):
     template_name = "testfront.html"
+
+
+class ChangePasswordView(View):
+    def get(self, request):
+        form = ChangePasswordForm()
+        context = {
+            'form': form,
+        }
+        return render(request, 'website/changePassword.html', context)
+
+    def post(self, request):
+        form = ChangePasswordForm(request.POST or None)
+        if form.is_valid():
+            old_password = form.cleaned_data.get('old_passowrd')
+            new_password = form.cleaned_data.get('confirm_passowrd')
+            user = authenticate(
+                username=request.user.username, password=old_password)
+            print(user)
+            if user:
+                user.set_password(new_password)
+                user.save()
+                messages.success(request, "Password Changed")
+                return redirect('website:dashboard')
+
+            else:
+                messages.error(request, "Old Password Wrong")
+                return redirect('website:changePassword')
+        else:
+            print(form.errors)
+
+        context = {
+            'form': form,
+        }
+        return render(request, 'website/changePassword.html', context)
 
 
 class AdminLogInView(View):
@@ -166,7 +206,7 @@ class SliderCreateView(SuccessMessageMixin, CreateView):
     template_name = 'website/sliderCreate.html'
     form_class = SliderForm
     success_url = reverse_lazy("website:sliderList")
-    success_message = "Menu Successfully Added"
+    success_message = "slider Successfully Added"
 
 
 class SliderUpdateView(SuccessMessageMixin, UpdateView):
@@ -198,20 +238,94 @@ class SliderListView(ListView):
         return Slider.objects.filter(deleted_at=None)
 
 
-class FrontendPageDetailView(DetailView):
+class GalleryCreateView(SuccessMessageMixin, CreateView):
+    model = Gallery
+    template_name = 'website/galleryCreate.html'
+    form_class = GalleryForm
+    success_url = reverse_lazy("website:galleryList")
+    success_message = "Gallery Successfully Added"
+
+
+class GalleryDetailView(DetailView):
+    model = Gallery
+    template_name = 'website/galleryDetail.html'
+
+
+class GalleryListView(ListView):
+    model = Gallery
+    template_name = 'website/galleryList.html'
+    context_object_name = 'photos'
+
+    def get_queryset(self):
+        return Gallery.objects.filter(deleted_at=None)
+
+
+class GalleryUpdateView(SuccessMessageMixin, UpdateView):
+    model = Gallery
+    template_name = 'website/galleryUpdate.html'
+    form_class = GalleryForm
+    success_url = reverse_lazy("website:galleryList")
+    success_message = "Gallery Successfully Updated"
+
+
+class GalleryDeleteView(SuccessMessageMixin, DeleteView):
+    model = Gallery
+    template_name = 'website/delete.html'
+    success_url = reverse_lazy("website:galleryList")
+    success_message = "Gallery Successfully Deleted"
+
+
+class FileCreateView(SuccessMessageMixin, CreateView):
+    model = File
+    template_name = 'website/fileCreate.html'
+    form_class = FileForm
+    success_url = reverse_lazy("website:fileList")
+    success_message = "File Successfully Added"
+
+
+class FileListView(ListView):
+    model = File
+    template_name = 'website/fileList.html'
+    context_object_name = 'files'
+
+    def get_queryset(self):
+        return File.objects.filter(deleted_at=None)
+
+
+class FileUpdateView(SuccessMessageMixin, UpdateView):
+    model = File
+    template_name = 'website/fileUpdate.html'
+    form_class = FileForm
+    success_url = reverse_lazy("website:fileList")
+    success_message = "File Successfully Updated"
+
+
+class FileDeleteView(SuccessMessageMixin, DeleteView):
+    model = File
+    template_name = 'website/delete.html'
+    success_url = reverse_lazy("website:fileList")
+    success_message = "File Successfully Deleted"
+
+
+class MemberListView(ListView):
+    model = Member
+    template_name = 'website/memberList.html'
+    context_object_name = 'members'
+
+    def get_queryset(self):
+        return Member.objects.filter(deleted_at=None)
+
+
+class FrontendPageDetailView(HomeMixin, DetailView):
     model = Page
     template_name = 'website/frontendPageDetail.html'
 
 
-class HomeView(View):
-    def get(self, request, *args, **kwargs):
-        context = {
-
-        }
-        return render(request, 'website/home.html', context)
+class HomeView(HomeMixin, TemplateView):
+    template_name = 'website/home.html'
 
 
-class FrontendEventListView(ListView):
+class FrontendEventListView(HomeMixin, ListView):
     model = Event
     template_name = 'website/frontendEventList.html'
     context_object_name = 'events'
@@ -221,6 +335,63 @@ class FrontendEventListView(ListView):
         return Event.objects.filter(deleted_at=None)
 
 
-class FrontendEventDetailView(DetailView):
+class FrontendEventDetailView(HomeMixin, DetailView):
     model = Event
     template_name = 'website/frontendEventDetail.html'
+
+
+class FrontendGalleryListView(HomeMixin, ListView):
+    model = Gallery
+    template_name = 'website/frontendGalleryList.html'
+    context_object_name = 'photos'
+    paginate_by = 12
+
+    def get_queryset(self):
+        return Gallery.objects.filter(deleted_at=None)
+
+
+class FrontendFileListView(HomeMixin, ListView):
+    model = File
+    template_name = 'website/frontendFileList.html'
+    context_object_name = 'files'
+
+    def get_queryset(self):
+        return File.objects.filter(deleted_at=None)
+
+
+class MembershipView(SuccessMessageMixin, HomeMixin, CreateView):
+    model = Member
+    template_name = 'website/memberForm.html'
+    form_class = MemberForm
+    success_url = reverse_lazy("website:home")
+    success_message = "Membership Detail Successfully Submitted"
+
+
+class ContactView(HomeMixin, View):
+    def get(self, request):
+        form = ContactForm()
+        menu_root = Menu.get_root()
+        context = {
+            'form': form,
+            'menu_root': menu_root,
+        }
+        return render(request, 'website/contact.html', context)
+
+    def post(self, request):
+        form = ContactForm(request.POST or None)
+        menu_root = Menu.get_root()
+
+        if form.is_valid():
+            name = form.cleaned_data.get('name')
+            subject = form.cleaned_data.get('subject')
+            message = form.cleaned_data.get('message')
+            # send mail
+
+            return redirect('website:contact')
+
+        context = {
+            'form': form,
+            'menu_root': menu_root,
+
+        }
+        return render(request, 'website/contact.html', context)

@@ -9,6 +9,8 @@ urlpatterns = [
     url(r'^sophenAdmin/dashboard/$', Dashboard.as_view(), name="dashboard"),
     url(r'^sophenAdmin/login/$', AdminLogInView.as_view(), name='adminLogIn'),
     url(r'^sophenAdmin/logout/$', AdminLogOutView.as_view(), name='adminLogOut'),
+    url(r'^sophenAdmin/password-change/$',
+        ChangePasswordView.as_view(), name='changePassword'),
 
     url(r'^sophenAdmin/page/list/$',
         PageListView.as_view(), name='pageList'),
@@ -31,6 +33,30 @@ urlpatterns = [
         EventUpdateView.as_view(), name='eventUpdate'),
     url(r'^sophenAdmin/event/(?P<slug>[\w-]+)/delete/$',
         EventDeleteView.as_view(), name='eventDelete'),
+
+    url(r'^sophenAdmin/file/list/$',
+        FileListView.as_view(), name='fileList'),
+    url(r'^sophenAdmin/file/create/$',
+        FileCreateView.as_view(), name='fileCreate'),
+    url(r'^sophenAdmin/file/(?P<pk>[\d]+)/update/$',
+        FileUpdateView.as_view(), name='fileUpdate'),
+    url(r'^sophenAdmin/file/(?P<pk>[\d]+)/delete/$',
+        FileDeleteView.as_view(), name='fileDelete'),
+
+
+    url(r'^sophenAdmin/gallery/list/$',
+        GalleryListView.as_view(), name='galleryList'),
+    url(r'^sophenAdmin/gallery/create/$',
+        GalleryCreateView.as_view(), name='galleryCreate'),
+    url(r'^sophenAdmin/gallery/(?P<pk>[\d]+)/$',
+        GalleryDetailView.as_view(), name='galleryDetail'),
+    url(r'^sophenAdmin/gallery/(?P<pk>[\d]+)/update/$',
+        GalleryUpdateView.as_view(), name='galleryUpdate'),
+    url(r'^sophenAdmin/gallery/(?P<pk>[\d]+)/delete/$',
+        GalleryDeleteView.as_view(), name='galleryDelete'),
+
+    url(r'^sophenAdmin/member/list/$',
+        MemberListView.as_view(), name='memberList'),
 
     url(r'^sophenAdmin/menu/list/$',
         MenuListView.as_view(), name='menuList'),
@@ -61,4 +87,12 @@ urlpatterns = [
         FrontendEventDetailView.as_view(), name='frontendEventDetail'),
     url(r'^events/$',
         FrontendEventListView.as_view(), name='frontendEventList'),
+    url(r'^gallery/$',
+        FrontendGalleryListView.as_view(), name='frontendGalleryList'),
+    url(r'^files/$',
+        FrontendFileListView.as_view(), name='frontendFileList'),
+    url(r'^membership/$',
+        MembershipView.as_view(), name='membership'),
+    url(r'^contact/$',
+        ContactView.as_view(), name='contact'),
 ]
