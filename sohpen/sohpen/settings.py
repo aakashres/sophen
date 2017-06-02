@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '4ji_2s2p#k_1!waodgg)c^0iy_9n@s3e*m6g9x&$y46u5q3dm7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'sophen.org']
 
 
 # Application definition
@@ -79,9 +79,9 @@ WSGI_APPLICATION = 'sohpen.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'sophen',
-        'USER': 'sophen',
-        'PASSWORD': 'sophen',
+        'NAME': 'sophenDB',
+        'USER': 'sophenUser',
+        'PASSWORD': 's@phen--76AAvasdasd',
         'HOST': 'localhost',
         'PORT': '',
     }
