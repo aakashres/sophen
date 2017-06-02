@@ -79,9 +79,9 @@ WSGI_APPLICATION = 'sohpen.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'sophenDB',
-        'USER': 'sophenUser',
-        'PASSWORD': 's@phen--76AAvasdasd',
+        'NAME': 'sophendb',
+        'USER': 'sophenuser',
+        'PASSWORD': 's@phen76AAvasdasd',
         'HOST': 'localhost',
         'PORT': '',
     }
