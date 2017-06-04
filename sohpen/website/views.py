@@ -6,6 +6,12 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .forms import *
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
+class LoginMixin(LoginRequiredMixin):
+    login_url = '/sophenAdmin/login/'
+    redirect_field_name = 'redirect_to'
 
 
 class HomeMixin(object):
@@ -15,7 +21,7 @@ class HomeMixin(object):
         return context
 
 
-class Dashboard(TemplateView):
+class Dashboard(LoginMixin, TemplateView):
     template_name = "dashboard.html"
 
 
@@ -23,7 +29,7 @@ class TestFrontend(HomeMixin, TemplateView):
     template_name = "testfront.html"
 
 
-class ChangePasswordView(View):
+class ChangePasswordView(LoginMixin, View):
     def get(self, request):
         form = ChangePasswordForm()
         context = {
@@ -34,14 +40,15 @@ class ChangePasswordView(View):
     def post(self, request):
         form = ChangePasswordForm(request.POST or None)
         if form.is_valid():
-            old_password = form.cleaned_data.get('old_passowrd')
-            new_password = form.cleaned_data.get('confirm_passowrd')
+            old_password = form.cleaned_data['old_password']
+            new_password = form.cleaned_data['confirm_password']
             user = authenticate(
                 username=request.user.username, password=old_password)
-            print(user)
+            print(user, old_password, new_password)
             if user:
                 user.set_password(new_password)
                 user.save()
+                login(request, user)
                 messages.success(request, "Password Changed")
                 return redirect('website:dashboard')
 
@@ -82,7 +89,7 @@ class AdminLogInView(View):
         return render(request, 'website/adminLogIn.html', context)
 
 
-class AdminLogOutView(View):
+class AdminLogOutView(LoginMixin, View):
     def get(self, request, *args, **kwargs):
         if self.request.user.is_authenticated():
             logout(request)
@@ -90,7 +97,7 @@ class AdminLogOutView(View):
         return redirect('website:adminLogIn')
 
 
-class PageCreateView(SuccessMessageMixin, CreateView):
+class PageCreateView(LoginMixin, SuccessMessageMixin, CreateView):
     model = Page
     template_name = 'website/pageCreate.html'
     form_class = PageForm
@@ -98,7 +105,7 @@ class PageCreateView(SuccessMessageMixin, CreateView):
     success_message = "Page Successfully Added"
 
 
-class PageUpdateView(SuccessMessageMixin, UpdateView):
+class PageUpdateView(LoginMixin, SuccessMessageMixin, UpdateView):
     model = Page
     template_name = 'website/pageUpdate.html'
     form_class = PageForm
@@ -106,19 +113,19 @@ class PageUpdateView(SuccessMessageMixin, UpdateView):
     success_message = "Page Successfully Updated"
 
 
-class PageDeleteView(SuccessMessageMixin, DeleteView):
+class PageDeleteView(LoginMixin, SuccessMessageMixin, DeleteView):
     model = Page
     template_name = 'website/delete.html'
     success_url = reverse_lazy("website:pageList")
     success_message = "Page Successfully Deleted"
 
 
-class PageDetailView(DetailView):
+class PageDetailView(LoginMixin, DetailView):
     model = Page
     template_name = 'website/pageDetail.html'
 
 
-class PageListView(ListView):
+class PageListView(LoginMixin, ListView):
     model = Page
     template_name = 'website/pageList.html'
     context_object_name = 'pages'
@@ -127,7 +134,7 @@ class PageListView(ListView):
         return Page.objects.filter(deleted_at=None)
 
 
-class EventCreateView(SuccessMessageMixin, CreateView):
+class EventCreateView(LoginMixin, SuccessMessageMixin, CreateView):
     model = Event
     template_name = 'website/eventCreate.html'
     form_class = EventForm
@@ -135,7 +142,7 @@ class EventCreateView(SuccessMessageMixin, CreateView):
     success_message = "Event Successfully Added"
 
 
-class EventUpdateView(SuccessMessageMixin, UpdateView):
+class EventUpdateView(LoginMixin, SuccessMessageMixin, UpdateView):
     model = Event
     template_name = 'website/eventUpdate.html'
     form_class = EventForm
@@ -143,19 +150,19 @@ class EventUpdateView(SuccessMessageMixin, UpdateView):
     success_message = "Event Successfully Updated"
 
 
-class EventDeleteView(SuccessMessageMixin, DeleteView):
+class EventDeleteView(LoginMixin, SuccessMessageMixin, DeleteView):
     model = Event
     template_name = 'website/delete.html'
     success_url = reverse_lazy("website:eventList")
     success_message = "Event Successfully Deleted"
 
 
-class EventDetailView(DetailView):
+class EventDetailView(LoginMixin, DetailView):
     model = Event
     template_name = 'website/eventDetail.html'
 
 
-class EventListView(ListView):
+class EventListView(LoginMixin, ListView):
     model = Event
     template_name = 'website/eventList.html'
     context_object_name = 'events'
@@ -164,7 +171,7 @@ class EventListView(ListView):
         return Event.objects.filter(deleted_at=None)
 
 
-class MenuCreateView(SuccessMessageMixin, CreateView):
+class MenuCreateView(LoginMixin, SuccessMessageMixin, CreateView):
     model = Menu
     template_name = 'website/menuCreate.html'
     form_class = MenuForm
@@ -172,7 +179,7 @@ class MenuCreateView(SuccessMessageMixin, CreateView):
     success_message = "Menu Successfully Added"
 
 
-class MenuUpdateView(SuccessMessageMixin, UpdateView):
+class MenuUpdateView(LoginMixin, SuccessMessageMixin, UpdateView):
     model = Menu
     template_name = 'website/menuUpdate.html'
     form_class = MenuForm
@@ -180,19 +187,19 @@ class MenuUpdateView(SuccessMessageMixin, UpdateView):
     success_message = "Menu Successfully Updated"
 
 
-class MenuDeleteView(SuccessMessageMixin, DeleteView):
+class MenuDeleteView(LoginMixin, SuccessMessageMixin, DeleteView):
     model = Menu
     template_name = 'website/delete.html'
     success_url = reverse_lazy("website:menuList")
     success_message = "Menu Successfully Deleted"
 
 
-class MenuDetailView(DetailView):
+class MenuDetailView(LoginMixin, DetailView):
     model = Menu
     template_name = 'website/menuDetail.html'
 
 
-class MenuListView(ListView):
+class MenuListView(LoginMixin, ListView):
     model = Menu
     template_name = 'website/menuList.html'
     context_object_name = 'menus'
@@ -201,7 +208,7 @@ class MenuListView(ListView):
         return Menu.objects.filter(deleted_at=None)
 
 
-class SliderCreateView(SuccessMessageMixin, CreateView):
+class SliderCreateView(LoginMixin, SuccessMessageMixin, CreateView):
     model = Slider
     template_name = 'website/sliderCreate.html'
     form_class = SliderForm
@@ -209,7 +216,7 @@ class SliderCreateView(SuccessMessageMixin, CreateView):
     success_message = "slider Successfully Added"
 
 
-class SliderUpdateView(SuccessMessageMixin, UpdateView):
+class SliderUpdateView(LoginMixin, SuccessMessageMixin, UpdateView):
     model = Slider
     template_name = 'website/sliderUpdate.html'
     form_class = SliderForm
@@ -217,19 +224,19 @@ class SliderUpdateView(SuccessMessageMixin, UpdateView):
     success_message = "Slider Successfully Updated"
 
 
-class SliderDeleteView(SuccessMessageMixin, DeleteView):
+class SliderDeleteView(LoginMixin, SuccessMessageMixin, DeleteView):
     model = Slider
     template_name = 'website/delete.html'
     success_url = reverse_lazy("website:sliderList")
     success_message = "Slider Successfully Deleted"
 
 
-class SliderDetailView(DetailView):
+class SliderDetailView(LoginMixin, DetailView):
     model = Slider
     template_name = 'website/sliderDetail.html'
 
 
-class SliderListView(ListView):
+class SliderListView(LoginMixin, ListView):
     model = Slider
     template_name = 'website/sliderList.html'
     context_object_name = 'photos'
@@ -238,7 +245,7 @@ class SliderListView(ListView):
         return Slider.objects.filter(deleted_at=None)
 
 
-class GalleryCreateView(SuccessMessageMixin, CreateView):
+class GalleryCreateView(LoginMixin, SuccessMessageMixin, CreateView):
     model = Gallery
     template_name = 'website/galleryCreate.html'
     form_class = GalleryForm
@@ -246,12 +253,12 @@ class GalleryCreateView(SuccessMessageMixin, CreateView):
     success_message = "Gallery Successfully Added"
 
 
-class GalleryDetailView(DetailView):
+class GalleryDetailView(LoginMixin, DetailView):
     model = Gallery
     template_name = 'website/galleryDetail.html'
 
 
-class GalleryListView(ListView):
+class GalleryListView(LoginMixin, ListView):
     model = Gallery
     template_name = 'website/galleryList.html'
     context_object_name = 'photos'
@@ -260,7 +267,7 @@ class GalleryListView(ListView):
         return Gallery.objects.filter(deleted_at=None)
 
 
-class GalleryUpdateView(SuccessMessageMixin, UpdateView):
+class GalleryUpdateView(LoginMixin, SuccessMessageMixin, UpdateView):
     model = Gallery
     template_name = 'website/galleryUpdate.html'
     form_class = GalleryForm
@@ -268,14 +275,14 @@ class GalleryUpdateView(SuccessMessageMixin, UpdateView):
     success_message = "Gallery Successfully Updated"
 
 
-class GalleryDeleteView(SuccessMessageMixin, DeleteView):
+class GalleryDeleteView(LoginMixin, SuccessMessageMixin, DeleteView):
     model = Gallery
     template_name = 'website/delete.html'
     success_url = reverse_lazy("website:galleryList")
     success_message = "Gallery Successfully Deleted"
 
 
-class FileCreateView(SuccessMessageMixin, CreateView):
+class FileCreateView(LoginMixin, SuccessMessageMixin, CreateView):
     model = File
     template_name = 'website/fileCreate.html'
     form_class = FileForm
@@ -283,7 +290,7 @@ class FileCreateView(SuccessMessageMixin, CreateView):
     success_message = "File Successfully Added"
 
 
-class FileListView(ListView):
+class FileListView(LoginMixin, ListView):
     model = File
     template_name = 'website/fileList.html'
     context_object_name = 'files'
@@ -292,7 +299,7 @@ class FileListView(ListView):
         return File.objects.filter(deleted_at=None)
 
 
-class FileUpdateView(SuccessMessageMixin, UpdateView):
+class FileUpdateView(LoginMixin, SuccessMessageMixin, UpdateView):
     model = File
     template_name = 'website/fileUpdate.html'
     form_class = FileForm
@@ -300,14 +307,14 @@ class FileUpdateView(SuccessMessageMixin, UpdateView):
     success_message = "File Successfully Updated"
 
 
-class FileDeleteView(SuccessMessageMixin, DeleteView):
+class FileDeleteView(LoginMixin, SuccessMessageMixin, DeleteView):
     model = File
     template_name = 'website/delete.html'
     success_url = reverse_lazy("website:fileList")
     success_message = "File Successfully Deleted"
 
 
-class MemberListView(ListView):
+class MemberListView(LoginMixin, ListView):
     model = Member
     template_name = 'website/memberList.html'
     context_object_name = 'members'
@@ -323,6 +330,11 @@ class FrontendPageDetailView(HomeMixin, DetailView):
 
 class HomeView(HomeMixin, TemplateView):
     template_name = 'website/home.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(HomeView, self).get_context_data(**kwargs)
+        context['slider_photos'] = Slider.objects.filter(active=True)
+        return context
 
 
 class FrontendEventListView(HomeMixin, ListView):
@@ -395,3 +407,7 @@ class ContactView(HomeMixin, View):
 
         }
         return render(request, 'website/contact.html', context)
+
+
+class CommitteeMember(HomeMixin, TemplateView):
+    template_name = 'website/committeeMember.html'

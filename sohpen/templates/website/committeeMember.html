@@ -1,0 +1,219 @@
+{%extends 'layouts/frontend/base.html' %}
+{% load staticfiles%}
+{% block content %}
+<!-- breadcrumbs -->
+<section class="breadcrumbs">
+    <div class="breadcrumbs-wrapper">
+        <div class="container">
+            <div class="row">
+                <!-- page title -->
+                <div class="col-md-6 col-xs-6">
+                    <h4>Committee Membes</h4>
+                </div>
+                <!-- .page title -->
+
+                <!-- breadcumbs -->
+                <div class="col-md-6 col-xs-6">
+                    <ol class="breadcrumb">
+                        <li><a href="{% url 'website:home' %}">Home</a>
+                        </li>
+                        <li class="active"><a href="{% url 'website:members' %}">Committee Members</a>
+                        </li>
+                    </ol>
+                </div>
+                <!-- .breadcrumbs -->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- blog posts & widgets -->
+<section>
+    <div class="container">
+        <div class="row">
+            <!-- paginate & posts -->
+            <div class="col-md-12">
+            <h2>Eight Committee Members</h2>
+                <!-- posts -->
+                <div class="posts">
+                    <!-- gallery wrapper -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- a -->
+                            <div class="row gallery">
+                                <div class="col-md-offset-2 col-md-4 col-xs-6">
+                                    <div class="box-wrapper">
+                                        <div class="box">
+                                            <div class="media">
+                                                    <img src="{% static 'user.jpg' %}" title="" alt="" />
+                                                <div class="content-caption text-left">
+                                                    <span>Er. Ramdeep Shah</span><br/>
+                                                    <span class="grey">Chairman</span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4 col-xs-6">
+                                    <div class="box-wrapper">
+                                        <div class="box">
+                                            <div class="media">
+                                                    <img src="{% static 'user.jpg' %}" title="" alt="" />
+                                                <div class="content-caption text-left">
+                                                    <span>Er. Sanjeeb Bikram Rana</span><br/>
+                                                    <span class="grey">Vice Chairman</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4 col-xs-6">
+                                    <div class="box-wrapper">
+                                        <div class="box">
+                                            <div class="media">
+                                                    <img src="{% static 'user.jpg' %}" title="" alt="" />
+                                                <div class="content-caption text-left">
+                                                    <span>Er. Kiran Darnal</span><br/>
+                                                    <span class="grey">General Secretary</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4 col-xs-6">
+                                    <div class="box-wrapper">
+                                        <div class="box">
+                                            <div class="media">
+                                                    <img src="{% static 'user.jpg' %}" title="" alt="" />
+                                                <div class="content-caption text-left">
+                                                    <span>Er. Rajiv Joshi</span><br/>
+                                                    <span class="grey">Deputy General Secretary</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4 col-xs-6">
+                                    <div class="box-wrapper">
+                                        <div class="box">
+                                            <div class="media">
+                                                    <img src="{% static 'user.jpg' %}" title="" alt="" />
+                                                <div class="content-caption text-left">
+                                                    <span>Er. Arati Shrestha</span><br/>
+                                                    <span class="grey">Treasurer</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4 col-xs-6">
+                                    <div class="box-wrapper">
+                                        <div class="box">
+                                            <div class="media">
+                                                    <img src="{% static 'user.jpg' %}" title="" alt="" />
+                                                <div class="content-caption text-left">
+                                                    <span>Er. Bishwa Raj Joshi</span><br/>
+                                                    <span class="grey">Executive Member</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4 col-xs-6">
+                                    <div class="box-wrapper">
+                                        <div class="box">
+                                            <div class="media">
+                                                    <img src="{% static 'user.jpg' %}" title="" alt="" />
+                                                <div class="content-caption text-left">
+                                                    <span>Er. Kabindra Pudasaini</span><br/>
+                                                    <span class="grey">Executive Member</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4 col-xs-6">
+                                    <div class="box-wrapper">
+                                        <div class="box">
+                                            <div class="media">
+                                                    <img src="{% static 'user.jpg' %}" title="" alt="" />
+                                                <div class="content-caption text-left">
+                                                    <span>Er. Mahesh Bhattarai</span><br/>
+                                                    <span class="grey">Executive Member</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4 col-xs-6">
+                                    <div class="box-wrapper">
+                                        <div class="box">
+                                            <div class="media">
+                                                    <img src="{% static 'user.jpg' %}" title="" alt="" />
+                                                <div class="content-caption text-left">
+                                                    <span>Er. Raja Ram Pote Shrestha</span><br/>
+                                                    <span class="grey">Executive Member</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4 col-xs-6">
+                                    <div class="box-wrapper">
+                                        <div class="box">
+                                            <div class="media">
+                                                    <img src="{% static 'user.jpg' %}" title="" alt="" />
+                                                <div class="content-caption text-left">
+                                                    <span>Er. Rajit Ojha</span><br/>
+                                                    <span class="grey">Executive Member</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4 col-xs-6">
+                                    <div class="box-wrapper">
+                                        <div class="box">
+                                            <div class="media">
+                                                    <img src="{% static 'user.jpg' %}" title="" alt="" />
+                                                <div class="content-caption text-left">
+                                                    <span>Er. Ujjwal Shrestha</span><br/>
+                                                    <span class="grey">Executive Member</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- .b -->
+
+                        </div>
+                    </div>
+                    <!-- .2 -->
+
+                </div>
+                <!-- .gallery -->
+
+
+            </div>
+        </div>
+        <!-- .posts -->
+    </div>
+    <!-- .paginate & posts -->
+
+</section>
+<!-- .blog posts & widgets -->
+{% endblock content %}

@@ -52,7 +52,7 @@
                             <tr>
                                 <td class="sort-numeric">{{forloop.counter}}</td>
                                 <td>{{file.name}}</td>
-                                <td><a href="{{file.file.url}}" download>{{file.file.url|split:"/"}}</a></td>
+                                <td><a href="{{file.file.url}}" download>{{file.file.url|split:"/"}}</a> <a href="{{file.file.url}}" download><i class="fa fa-download"></i></a></td>
                             </tr>
                         {% endfor %}
                     </tbody>
