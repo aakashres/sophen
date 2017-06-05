@@ -77,7 +77,7 @@
                                     <i class="fa fa-calendar"></i>
                                 </div>
                                 <div class="event-title">
-                                    <h3><a href="event-single.html">International Conference</a>
+                                    <h3><a href="/event/{{event.slug}}">{{event.title}}</a>
                                     </h3>
                                 </div>
 
@@ -308,7 +308,7 @@
 <script type="text/javascript">
 /* COUNT DOWN */
     $('.countdown').downCount({
-        date: '09/09/2018 12:00:00',
+        date: "{{event.event_date|date:'d/m/Y H:i'}}",
         offset: +10
     }, function() {
 
