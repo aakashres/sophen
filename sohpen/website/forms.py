@@ -103,6 +103,7 @@ class EventForm(forms.ModelForm):
             'title',
             'slug',
             'photo',
+            'event_date',
             'description',
         ]
 
