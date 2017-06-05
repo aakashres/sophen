@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.utils.crypto import get_random_string
 from ckeditor.fields import RichTextField
 
 
@@ -35,7 +36,7 @@ class Event(Timestampable):
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True)
     description = RichTextField()
-    
+
     photo = models.ImageField(upload_to=uploadEventPhoto,
                               null=True,
                               blank=True)
@@ -74,7 +75,7 @@ class Menu(Timestampable):
 
 def uploadSliderPhoto(instance, filename):
     date_time = str(timezone.now())
-    return "%s/%s/%s" % ('slider', str(date_time), filename)
+    return "%s/%s" % ('slider' , get_random_string(length=5)+filename)
 
 
 class Slider(Timestampable):
