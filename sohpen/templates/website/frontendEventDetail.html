@@ -51,9 +51,11 @@
                                             <div class="carousel-inner">
 
                                                 <!-- 1 -->
+                                                {% if event.photo %}
                                                 <div class="item active">
                                                     <img src="{{event.photo.url}}" alt="" title="" />
                                                 </div>
+                                                {% endif %}
                                                 <!-- .1 -->
                                             </div>
                                             <!-- /Wrapper for slides .carousel-inner -->
