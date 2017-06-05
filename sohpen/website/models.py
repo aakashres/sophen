@@ -79,11 +79,11 @@ def uploadSliderPhoto(instance, filename):
 
 
 class Slider(Timestampable):
-    photo = models.ImageField(upload_to=uploadSliderPhoto,
+    photo = models.ImageField(upload_to='slider',
                               null=True,
                               blank=True)
     label = models.CharField(max_length=255, blank=True, null=True)
-    active = models.BooleanField(default=False)
+    active = models.BooleanField(default=True)
 
     def __str__(self):
         return str(self.pk)
