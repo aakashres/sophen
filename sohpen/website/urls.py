@@ -6,6 +6,7 @@ urlpatterns = [
     url(r'^$', HomeView.as_view(), name="home"),
 
 
+    url(r'^sophenAdmin/$', Dashboard.as_view(), name="dashboard_main"),
     url(r'^sophenAdmin/dashboard/$', Dashboard.as_view(), name="dashboard"),
     url(r'^sophenAdmin/login/$', AdminLogInView.as_view(), name='adminLogIn'),
     url(r'^sophenAdmin/logout/$', AdminLogOutView.as_view(), name='adminLogOut'),

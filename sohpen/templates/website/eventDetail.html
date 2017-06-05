@@ -21,9 +21,11 @@
             <!-- BEGIN BLOG POST TEXT -->
             <div class="col-md-12">
                 <article class="style-default-bright">
+                    {% if event.photo %}
                     <div>
                         <img class="img-responsive" src="{{event.photo.url}}" alt="" />
                     </div>
+                    {% endif %}
                     <div class="card-body">
                         <p>{{event.description|safe}}</p>
                     </div><!--end .card-body -->

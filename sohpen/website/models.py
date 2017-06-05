@@ -35,6 +35,7 @@ class Event(Timestampable):
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True)
     description = RichTextField()
+    
     photo = models.ImageField(upload_to=uploadEventPhoto,
                               null=True,
                               blank=True)
