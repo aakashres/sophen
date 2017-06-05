@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.min.css">
 <section>
 <div class="section-body contain-lg">
     <div class="card">
@@ -22,7 +23,19 @@
 {% endblock %}
 
 {% block extra_js%}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.full.min.js"></script>
 <script type="text/javascript">
-    $('#event').addClass('active')
+    $('#event').addClass('active');
 </script>
+<script type="text/javascript">
+     $(function(){
+            $('#id_event_date').datetimepicker({
+          format:'Y-m-d H:i'         
+        }); 
+     });
+    
+
+</script>
+
+
 {% endblock %}

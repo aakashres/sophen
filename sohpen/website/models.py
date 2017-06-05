@@ -35,6 +35,8 @@ def uploadEventPhoto(instance, filename):
 class Event(Timestampable):
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True)
+    event_date = models.DateTimeField()
+
     description = RichTextField()
 
     photo = models.ImageField(upload_to=uploadEventPhoto,
@@ -78,7 +80,7 @@ def uploadSliderPhoto(instance, filename):
 
 
 class Slider(Timestampable):
-    photo = models.ImageField(upload_to='slider',
+    photo = models.ImageField(upload_to='slider/',
                               null=True,
                               blank=True)
     label = models.CharField(max_length=255, blank=True, null=True)
