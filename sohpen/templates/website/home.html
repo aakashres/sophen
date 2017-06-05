@@ -11,7 +11,7 @@
                 {% if slider_photos %}
                 {% for photo in slider_photos %}
                 <!-- 1 -->
-                <div class="item active">
+                <div class="item {% if forloop.counter == 1%}active{% endif %}">
 
                     <img src="{{photo.photo.url}}" alt="" title="" height="300px" />
 
