@@ -74,7 +74,6 @@ class Menu(Timestampable):
 
 
 def uploadSliderPhoto(instance, filename):
-    date_time = str(timezone.now())
     return "%s/%s" % ('slider' , get_random_string(length=5)+filename)
 
 
