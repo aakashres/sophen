@@ -308,8 +308,7 @@
 <script type="text/javascript">
 /* COUNT DOWN */
     $('.countdown').downCount({
-        date: "{{event.event_date|date:'d/m/Y H:i'}}",
-        offset: +10
+        date: "{{event.event_date|date:'d/m/Y H:i'}}:00"
     }, function() {
 
     });
