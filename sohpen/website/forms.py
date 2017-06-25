@@ -1,6 +1,7 @@
 from django import forms
 from .models import *
-
+from ckeditor.widgets import CKEditorWidget
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 class ContactForm(forms.Form):
     name = forms.CharField(
@@ -88,6 +89,11 @@ class PageForm(forms.ModelForm):
             'slug',
             'description',
         ]
+        widgets = {
+          
+            'description': CKEditorUploadingWidget(),
+
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
