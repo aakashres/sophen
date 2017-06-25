@@ -376,7 +376,7 @@ class FrontendFileListView(HomeMixin, ListView):
 class ConferenceMembershipView(SuccessMessageMixin, HomeMixin, CreateView):
     model = ConferenceMember
     template_name = 'website/conferenceMember.html'
-    form_class = MemberForm
+    form_class = ConferenceMemberForm
     success_url = reverse_lazy("website:home")
     success_message = "Conference Registration Completed."
 
