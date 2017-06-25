@@ -94,6 +94,8 @@ urlpatterns = [
         FrontendFileListView.as_view(), name='frontendFileList'),
     url(r'^membership/$',
         MembershipView.as_view(), name='membership'),
+    url(r'^conference-membership/$',
+        ConferenceMembershipView.as_view(), name='confmembership'),
     url(r'^contact/$',
         ContactView.as_view(), name='contact'),
     url(r'^members/$',
