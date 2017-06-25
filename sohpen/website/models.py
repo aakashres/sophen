@@ -330,14 +330,16 @@ class ConferenceMember(Timestampable):
     state = models.CharField('Name of State', max_length=512, null=True, blank=True)
     postal_zip = models.CharField('Postal/Zip', max_length=255)
     country = models.IntegerField(choices=TYPE_CHOICES, default=1)
-    business_type = models.CharField('Type of Business', max_length=512)
+    business_type = models.CharField('Type of Business', max_length=512, null=True, blank=True)
     contact_person = models.CharField('Contact Person', max_length=512)
     contact_for_payment = models.CharField('Contact Person for Payment', max_length=512)
     telephone = models.CharField('Telephone', max_length=512, null=True, blank=True)
     fax = models.CharField('Fax', max_length=512, null=True, blank=True)
+    
     mobile = models.CharField('Mobile', max_length=512, null=True, blank=True)
     email = models.CharField('Email', max_length=512)
     signature = models.CharField('Signature (Full Name, Date)', max_length=512)
+    
     
 
     def __str__(self):
