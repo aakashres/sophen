@@ -171,6 +171,15 @@ class EventListView(LoginMixin, ListView):
         return Event.objects.filter(deleted_at=None)
 
 
+class ConferenceMemberListView(LoginMixin, ListView):
+    model = ConferenceMember
+    template_name = 'website/conferenceMemberList.html'
+    context_object_name = 'members'
+
+    def get_queryset(self):
+        return ConferenceMember.objects.filter(deleted_at=None)
+
+
 class MenuCreateView(LoginMixin, SuccessMessageMixin, CreateView):
     model = Menu
     template_name = 'website/menuCreate.html'

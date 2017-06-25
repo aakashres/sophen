@@ -15,6 +15,8 @@ urlpatterns = [
 
     url(r'^sophenAdmin/page/list/$',
         PageListView.as_view(), name='pageList'),
+    url(r'^sophenAdmin/conferenceMembership/list/$',
+        ConferenceMemberListView.as_view(), name='confList'),
     url(r'^sophenAdmin/page/create/$',
         PageCreateView.as_view(), name='pageCreate'),
     url(r'^sophenAdmin/page/(?P<slug>[\w-]+)/$',
