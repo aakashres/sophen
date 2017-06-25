@@ -373,13 +373,20 @@ class FrontendFileListView(HomeMixin, ListView):
         return File.objects.filter(deleted_at=None)
 
 
+class ConferenceMembershipView(SuccessMessageMixin, HomeMixin, CreateView):
+    model = ConferenceMember
+    template_name = 'website/conferenceMember.html'
+    form_class = MemberForm
+    success_url = reverse_lazy("website:home")
+    success_message = "Conference Registration Completed."
+
+
 class MembershipView(SuccessMessageMixin, HomeMixin, CreateView):
     model = Member
     template_name = 'website/memberForm.html'
     form_class = MemberForm
     success_url = reverse_lazy("website:home")
     success_message = "Membership Detail Successfully Submitted"
-
 
 class ContactView(HomeMixin, View):
     def get(self, request):

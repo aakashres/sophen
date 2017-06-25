@@ -3,6 +3,21 @@ from .models import *
 from ckeditor.widgets import CKEditorWidget
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
+
+class ConferenceMemberForm(forms.ModelForm):
+    class Meta:
+        model = ConferenceMember
+        exclude = ['deleted_at']
+     # Adding Classes to each for CSS styling
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in iter(self.fields):
+            self.fields[field].widget.attrs.update({
+                'class': 'form-control'
+            })
+
+
+
 class ContactForm(forms.Form):
     name = forms.CharField(
         widget=forms.TextInput(attrs={
