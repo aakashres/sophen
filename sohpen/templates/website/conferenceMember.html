@@ -8,7 +8,7 @@
             <div class="row">
                 <!-- page title -->
                 <div class="col-md-6 col-xs-6">
-                    <h4>Membership</h4>
+                    <h4>Conference Registration</h4>
                 </div>
                 <!-- .page title -->
 
@@ -17,7 +17,7 @@
                     <ol class="breadcrumb">
                         <li><a href="{% url 'website:home' %}">Home</a>
                         </li>
-                        <li class="active"><a href="#">Membership</a>
+                        <li class="active"><a href="#">Conference Registration</a>
                         </li>
                     </ol>
                 </div>
@@ -47,7 +47,7 @@
                                 <div class="content">
                                     <form method="POST" action="" enctype="multipart/form-data">
                                     {% csrf_token %}
-                                            {{form.as_p}}
+                                            {{form}}
 
                                             <div class="form-group">
                                                 <button type="submit" class="button-normal full blue">Submit</button>
