@@ -47,7 +47,15 @@
                                 <div class="content">
                                     <form method="POST" action="" enctype="multipart/form-data">
                                     {% csrf_token %}
-                                            {{form}}
+                                            {% for field in form %}
+                                                  <div class="widget-box">
+                                                   {{ field.errors }}
+                                                    <h6> {{ field.label_tag }}</h6>
+                                                        <div class="form-group">
+                                                            {{ field }}
+                                                        </div>
+                                                    </div>
+                                            {% endfor %}
 
                                             <div class="form-group">
                                                 <button type="submit" class="button-normal full blue">Submit</button>
