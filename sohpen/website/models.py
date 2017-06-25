@@ -4,7 +4,7 @@ from django.utils.crypto import get_random_string
 from ckeditor.fields import RichTextField
 
 
-ALL_COUNTRY_CHOICES = ((1, 'Afghanistan'),
+TYPE_CHOICES = ((1, 'Afghanistan'),
 (2  , 'Albania'),
 (3  , 'Algeria'),
 (4  , 'Andorra'),
