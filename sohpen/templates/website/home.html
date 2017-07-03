@@ -83,31 +83,9 @@
 
                                 <div class="event-counter pull-right">
 
-                                    <ul class="countdown list-unstyled list-inline text-center">
-                                        <li>
-                                            <p class="days_ref">Days</p>
-                                            <span class="days">00</span>
+                                    <div class="yourCountdownContainer">
 
-                                        </li>
-
-                                        <li>
-                                            <p class="hours_ref">Hours</p>
-                                            <span class="hours">00</span>
-
-                                        </li>
-
-                                        <li>
-                                            <p class="minutes_ref">Minutes</p>
-                                            <span class="minutes">00</span>
-
-                                        </li>
-
-                                        <li>
-                                            <p class="seconds_ref">Seconds</p>
-                                            <span class="seconds">00</span>
-
-                                        </li>
-                                    </ul>
+                                    </div>
                                 </div>
                             </div>
                             <!-- .upcoming event -->
@@ -122,6 +100,21 @@
     </section>
     <!-- .upcoming-event -->
     <!-- intro -->
+       <section class="box-section">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="full-promo text-center">
+                                <h2>
+                                    <strong>Register for Conference</strong>
+                                </h2>
+                                <h6>Water, Environment and Climate Change: Knowledge Sharing and Partnership</h6>
+                                <a class="button-normal blue" href="/conference-membership">Register NOW</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
     <section>
         <div class="container">
             <div class="row">
@@ -305,13 +298,12 @@
 {% endblock %}
 
 {% block extra_js %}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/easy-countdown/2.2.0/jquery.countdown.min.js"></script>
 <script type="text/javascript">
-/* COUNT DOWN */
-    $('.countdown').downCount({
-        date: "{{event.event_date|date:'m/d/Y H:i'}}:00",
-        offset: +10
-    }, function() {
-
+$(function() {
+    $('.yourCountdownContainer').countdown({
+        date: "{{event.event_date|date:'m/d/Y H:i'}}:00"
     });
+});
 </script>
 {% endblock extra_js %}
