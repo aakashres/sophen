@@ -4,6 +4,9 @@ from django.utils.crypto import get_random_string
 from ckeditor.fields import RichTextField
 
 
+PARTICIPANT_CHOICES = ((1, 'Paper/Poster Presenter'),
+(2  , 'Participant'))
+
 TYPE_CHOICES = ((1, 'Afghanistan'),
 (2  , 'Albania'),
 (3  , 'Algeria'),
@@ -323,7 +326,9 @@ class File(Timestampable):
 
 
 class ConferenceMember(Timestampable):
-    company_name = models.CharField('Name of Company', max_length=255)
+    full_name = models.CharField('Full Name:', max_length=510)
+    company_name = models.CharField('Name of Company',null=True, blank=True, max_length=255)
+    application_type = models.IntegerField(choices=PARTICIPANT_CHOICES, default=1)
     address_1 = models.TextField('Address 1')
     address_2 = models.TextField('Address 2', null=True, blank=True)
     town_city = models.CharField('Town/City', max_length=255)
@@ -332,18 +337,14 @@ class ConferenceMember(Timestampable):
     country = models.IntegerField(choices=TYPE_CHOICES, default=1)
     business_type = models.CharField('Type of Business', max_length=512, null=True, blank=True)
     contact_person = models.CharField('Contact Person', max_length=512)
-    contact_for_payment = models.CharField('Contact Person for Payment', max_length=512)
     telephone = models.CharField('Telephone', max_length=512, null=True, blank=True)
     fax = models.CharField('Fax', max_length=512, null=True, blank=True)
-    
     mobile = models.CharField('Mobile', max_length=512, null=True, blank=True)
     email = models.CharField('Email', max_length=512)
-    signature = models.CharField('Signature (Full Name, Date)', max_length=512)
-    
-    
+    signature = models.CharField('Signature (Full Name[BLOCK LETTERS], Date of Submission)', max_length=512)
 
     def __str__(self):
-        return str(company_name)
+        return str(self.full_name)
 
 
 
