@@ -142,3 +142,11 @@ CKEDITOR_CONFIGS = {
 
     },
 }
+
+EMAIL_HOST = 'mail.breadfruit.me'
+EMAIL_HOST_USER = 'no-reply@sophen.org'
+EMAIL_HOST_PASSWORD = '4wXv3G44n5'
+EMAIL_PORT = 225
+EMAIL_SUBJECT_PREFIX = '[SOPHEN]'
+EMAIL_USE_TLS = True
+

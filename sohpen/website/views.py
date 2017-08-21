@@ -8,6 +8,8 @@ from django.contrib import messages
 from .forms import *
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import *
+from django.core.mail import send_mail
+
 
 class LoginMixin(LoginRequiredMixin):
     login_url = '/sophenAdmin/login/'
@@ -382,12 +384,29 @@ class FrontendFileListView(HomeMixin, ListView):
         return File.objects.filter(deleted_at=None)
 
 
-class ConferenceMembershipView(SuccessMessageMixin, HomeMixin, CreateView):
-    model = ConferenceMember
-    template_name = 'website/conferenceMember.html'
-    form_class = ConferenceMemberForm
-    success_url = reverse_lazy("website:home")
-    success_message = "Conference Registration Completed."
+class ConferenceMembershipView(SuccessMessageMixin, HomeMixin, View):
+    template_name = 'website/conferenceMemberList.html'
+
+    def get(self, request, *args, **kwargs):
+        addCatForm = ConferenceMemberForm()
+        return render(request, self.template_name, {'form': addCatForm})
+
+    def post(self, request, *args, **kwargs):
+        form = ConferenceMemberForm(request.POST, request.FILES)
+        if form.is_valid():
+            category = form.save(commit=False)
+            category.save()
+            messages.success(request, "Registration Successful !")
+            msg = 'Dear '+category.contact_person+', <br/>Your request for the registration has been submitted successfully. We will reach out to you soon, with additional details. Thank You. <br/>Best Regards,<br/>Conference Organization Committee'
+
+            send_mail('Thank You for Registration', '', 'no-reply@sophen.org', [category.email], fail_silently=True, html_message=msg)
+
+            return HttpResponseRedirect('/')
+            # return render(request, self.template_name, {'catForm': ElectionContestantForm(), 'msg_success': "ElectionContestant Added Successfully"})
+
+        else:
+            return render(request, self.template_name, {'catForm': form, 'msg_error': "There Seems to be Some Problem. Please See Below !"})
+
 
 
 class MembershipView(SuccessMessageMixin, HomeMixin, CreateView):
