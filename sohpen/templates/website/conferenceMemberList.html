@@ -24,6 +24,7 @@
                             <thead>
                                 <tr>
                                     <th class="sort-numeric">#</th>
+                                    <th class="sort-alpha">Full Name</th>
                                     <th class="sort-alpha">Name of Company</th>
                                     <th class="sort-alpha">Address 1</th>
                                     <th class="sort-alpha">Town/City</th>
@@ -36,6 +37,7 @@
                                 {% for member in members %}
                                     <tr>
                                         <td>{{forloop.counter}}</td>
+                                        <td><a href="/sophenAdmin/conferenceMembershipDetail/{{member.id}}">{{member.full_name}}</a></td>
                                         <td>{{member.company_name}}</td>
                                         <td>{{member.address_1}}</td>
                                         <td>{{member.town_city}}</td>
