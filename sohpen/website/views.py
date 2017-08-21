@@ -127,6 +127,10 @@ class PageDetailView(LoginMixin, DetailView):
     model = Page
     template_name = 'website/pageDetail.html'
 
+class ConferenceRegistrationDetailView(LoginMixin, DetailView):
+    model = ConferenceMember
+    context_object_name = "member"
+    template_name = 'website/conferenceMembershipDetail.html'
 
 class PageListView(LoginMixin, ListView):
     model = Page
@@ -398,7 +402,7 @@ class ConferenceMembershipView(SuccessMessageMixin, HomeMixin, View):
             category = form.save(commit=False)
             category.save()
             messages.success(request, "Registration Successful !")
-            msg = 'Dear '+category.contact_person+', <br/>Your request for the registration has been submitted successfully. We will reach out to you soon, with additional details. Thank You. <br/><br/>Best Regards,<br/>Conference Organization Committee'
+            msg = 'Dear '+category.full_name+', <br/>Your request for the registration has been submitted successfully. We will reach out to you soon, with additional details. Thank You. <br/><br/>Best Regards,<br/>Conference Organization Committee'
 
             send_mail('Thank You for Registration', '', 'no-reply@sophen.org', [category.email], fail_silently=True, html_message=msg)
 
