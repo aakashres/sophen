@@ -385,7 +385,7 @@ class FrontendFileListView(HomeMixin, ListView):
 
 
 class ConferenceMembershipView(SuccessMessageMixin, HomeMixin, View):
-    template_name = 'website/conferenceMemberList.html'
+    template_name = 'website/conferenceMember.html'
 
     def get(self, request, *args, **kwargs):
         addCatForm = ConferenceMemberForm()
