@@ -9,6 +9,7 @@ from .forms import *
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import *
 from django.core.mail import send_mail
+from django.shortcuts import HttpResponseRedirect, HttpResponse
 
 
 class LoginMixin(LoginRequiredMixin):
@@ -397,7 +398,7 @@ class ConferenceMembershipView(SuccessMessageMixin, HomeMixin, View):
             category = form.save(commit=False)
             category.save()
             messages.success(request, "Registration Successful !")
-            msg = 'Dear '+category.contact_person+', <br/>Your request for the registration has been submitted successfully. We will reach out to you soon, with additional details. Thank You. <br/>Best Regards,<br/>Conference Organization Committee'
+            msg = 'Dear '+category.contact_person+', <br/>Your request for the registration has been submitted successfully. We will reach out to you soon, with additional details. Thank You. <br/><br/>Best Regards,<br/>Conference Organization Committee'
 
             send_mail('Thank You for Registration', '', 'no-reply@sophen.org', [category.email], fail_silently=True, html_message=msg)
 
