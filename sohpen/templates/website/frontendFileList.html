@@ -68,31 +68,7 @@
 
 
 <!-- blog posts & widgets -->
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="table-responsive">
-                <table id="datatable1" class="table table-striped table-hover"  style="margin-bottom:30px">
-                    <thead>
-                        <tr>
-                            <th class="sort-numeric">S.N.</th>
-                            <th class="sort-alpha">Name</th>
-                            <th class="sort-alpha">File</th>
-                    </thead>
-                    <tbody>
-                        {% for file in files %}
-                            <tr>
-                                <td class="sort-numeric">{{forloop.counter}}</td>
-                                <td>{{file.name}}</td>
-                                <td><a href="{{file.file.url}}" download>{{file.file.url|split:"/"}}</a> <a href="{{file.file.url}}" download><i class="fa fa-download"></i></a></td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div><!--end .table-responsive -->
-        </div>
-    </div>
-</section>
+
 
 {% endblock content %}
 

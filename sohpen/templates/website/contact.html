@@ -2,30 +2,32 @@
 {% load staticfiles%}
 {% block content %}
 <!-- breadcrumbs -->
-<section class="breadcrumbs">
-    <div class="breadcrumbs-wrapper">
+<div class="page-banner-area">
         <div class="container">
-            <div class="row">
-                <!-- page title -->
-                <div class="col-md-6 col-xs-6">
-                    <h4>Contact Us</h4>
-                </div>
-                <!-- .page title -->
-
-                <!-- breadcumbs -->
-                <div class="col-md-6 col-xs-6">
-                    <ol class="breadcrumb">
-                        <li><a href="{% url 'website:home' %}">Home</a>
+            <div class="col-md-4 col-md-offset-4">
+                <div class="page-banner-content">
+                    <div class="section-title">
+                        <h2>Contact</h2>
+                    </div>
+                    <div class="other-page">
+                        <ul>
+                            <li>
+                                <a href="/">
+                                    Home
+                                </a>
+                            </li>
+                              <li class="active"><a href="{% url 'website:contact' %}">Contact Us</a>
                         </li>
-                        <li class="active"><a href="{% url 'website:contact' %}">Contact Us</a>
-                        </li>
-                    </ol>
+                        </ul>
+                    </div>
                 </div>
-                <!-- .breadcrumbs -->
             </div>
         </div>
     </div>
-</section>
+
+
+
+
 <!-- map -->
 <section>
     <div class="container">

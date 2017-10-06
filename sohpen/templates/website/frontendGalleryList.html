@@ -2,6 +2,67 @@
 {% load staticfiles%}
 {% block content %}
 <!-- breadcrumbs -->
+<div class="page-banner-area">
+        <div class="container">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="page-banner-content">
+                    <div class="section-title">
+                        <h2>Gallery</h2>
+                    </div>
+                    <div class="other-page">
+                        <ul>
+                            <li>
+                                <a href="/">
+                                    Home
+                                </a>
+                            </li>
+                             <li class="active"><a href="{% url 'website:frontendGalleryList' %}">Gallery</a>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="blog-page-area" style="padding-top:10px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="single-blog-content">
+                        <div class="table-responsive">
+                <table id="" class="table table-striped table-hover"  style="margin-bottom:30px">
+                    <thead>
+                        <tr>
+                            <th class="sort-numeric">S.N.</th>
+                            <th class="sort-alpha">Name</th>
+                            <th class="sort-alpha">File</th>
+                    </thead>
+                    <tbody>
+                        {% for file in files %}
+                            <tr>
+                                <td class="sort-numeric">{{forloop.counter}}</td>
+                                <td>{{file.name}}</td>
+                                <td><a href="{{file.file.url}}" download>{{file.file.url|split:"/"}}</a> <a href="{{file.file.url}}" download><i class="fa fa-download"></i></a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+                        
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
 <section class="breadcrumbs">
     <div class="breadcrumbs-wrapper">
         <div class="container">
