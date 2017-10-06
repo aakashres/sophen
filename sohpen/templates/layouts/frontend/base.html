@@ -3,220 +3,207 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="" />
-    <meta name="description" content="">
-    <meta name="author" content="pebas - http://themeforest.net/user/pebas/">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>SOPHEN | Society of Public Health Engineers Nepal</title>
 
-    <!-- Title -->
-    <title>
-    {% block title%}
-    SOPHEN
-    {% endblock title %}
-    </title>
-    <style type="text/css">
-        .passive{
-            border-style: solid;
-            border-color: #00acc1;
-        }
-    </style>
-     <style type="text/css">
-    .carousel
-    {
-        background-color: #fff !important;
-    }
-    </style>
-    {% include 'layouts/frontend/include/head.html' %}
-    {% block extra_head %}
-    {% endblock extra_head%}
+    <!-- Enable zoom on mobile device
+    ========================================     -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700" rel="stylesheet">
+
+    <!-- Animate css -->
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+
+    <!-- Icofont -->
+    <link rel="stylesheet" href="{% static 'css/icofont.css' %}">
+
+    <!-- Mean menu -->
+    <link rel="stylesheet" href="{% static 'css/meanmenu.css' %}">
+
+    <!-- venobox -->
+    <link rel="stylesheet" href="{% static 'css/venobox.css' %}">
+
+    <!-- magnific -->
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+
+    <!-- Owl carosel css -->
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+
+    <!-- Layout/Bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!-- Default css -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <!-- fevicon -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/fevicon.png' %}">
 </head>
 
-<body>
 
-    <!-- preloader -->
-    <div class='preloader'>
-        <div class="preloader-content-wrapper">
-            <div class="preloader-content">
-                <i class="fa fa-cog fa-3x fa-spin"></i>
-            </div>
+<body class="home2">
+    <div id="preloader">
+        <div class="preloader-content">
+            <img src="{% static 'img/preloader.gif' %}" alt=""> 
         </div>
     </div>
-    <!-- .preloader -->
-
-    <!-- top bar -->
-    <header class="top-bar">
+    <!--==================================================
+            Start Header area
+    ==================================================-->
+    <header class="header-area">
         <div class="container">
             <div class="row">
-
-                <!-- languages -->
-                <div class="col-md-4 col-xs-6">
-                    <div class="languages nav-root">
-
-                        <!-- trigger -->
-                        <div class="pt-nav-trigger">
-                            <button><i class="fa fa-globe"></i> English <i class="fa fa-angle-down"></i>
-                            </button>
-                        </div>
-                        <!-- trigger -->
-                    </div>
-                </div>
-                <!-- .languages -->
-
-                <!-- add info -->
-                <div class="col-md-8 col-xs-12 clearfix">
-                    <div class="add-info">
-
-                        <!-- menu list -->
-                        <nav>
-                            <ul class="list-inline">
-                                <li><a href="#"><i class="fa fa-phone"></i> +977-1-4006650, 01-6208276</a>
-                                </li>
-                                <li><a href="mailto:info@sophen.org.np"><i class="fa fa-envelope-o"></i>info@sophen.org.np</a>
-                                </li>
-                            </ul>
-                            <!-- .menu list -->
-                        </nav>
-
-                    </div>
-                </div>
-                <!-- .add info -->
-
-            </div>
-        </div>
-    </header>
-    <!-- .top bar -->
-
-    <!-- main header -->
-    <header class="main-header">
-
-        <div class="container">
-            <div class="row">
-
-                <!-- logo -->
-                <div class="col-md-2">
-                    <div class="logo">
-                        <a href="/">
-                            <img src="{% static 'sophen-logo.png' %}" title="SOPHEN" alt="SOPHEN" style="width:200px;" />
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                    <div class="header-logo">
+                        <a href="index.html">
+                            <img src="{% static 'img/logo.png' %}" alt="logo">
                         </a>
                     </div>
                 </div>
-                <!-- .logo -->
-
-
-
-                <!-- main nav -->
-                <div class="col-md-10">
-                    <div class="main-nav nav-root">
-
-                        <!-- trigger -->
-                        <div class="pt-nav-trigger">
-                            <button><i class="fa fa-bars"></i>Navigation
-                            </button>
-                        </div>
-
-                        <!-- trigger -->
-                        <nav class="pt-nav clearfix">
-
-
-                            <!-- menu list -->
-                            <ul class="clearfix">
-
-                                {% for child in menu_root.not_deleted_children %}
+                <div class="col-lg-10 col-md-10 col-sm-10">
+                    <nav class="mainmenu">
+                        <ul>
+                            {% for child in menu_root.not_deleted_children %}
                                     {% if request.path|cut:"/" == child.url|cut:"/" %}
-                                        <li class="passive">
+                                        <li class="active">
                                     {% else %}
                                         <li>
                                     {% endif %}
                                     {% if child.not_deleted_children %}
                                             <a href="{{ child.url }}">{{ child.title }}</a>
-                                            <ul class="sub-menu">
-                                            {% for sub_child in child.not_deleted_children %}
-                                                <li  style="">
-                                                    <a href="{{ sub_child.url }}">{{ sub_child.title }}</a>
-                                                </li>
-                                            {% endfor %}
-                                            </ul>
+                                            <div class="single-menu-container">
+                                                <div class="single-menu-item">
+                                                     <ul>
+                                                        {% for sub_child in child.not_deleted_children %}
+                                                            <li  style="">
+                                                                <a href="{{ sub_child.url }}">{{ sub_child.title }}</a>
+                                                            </li>
+                                                        {% endfor %}
+                                                        </ul>
+                                                </div>
+                                            </div>
+
+                                           
                                     {% else %}
                                             <a href="{{ child.url }}">{{ child.title }}</a>
                                     {% endif %}
                                         </li>
                                 {% endfor %}
-                            </ul>
-                            <!-- .menu list -->
 
-                        </nav>
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Start mobile menu -->
+        <div class="mobile-menu-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="mobile-menu">
+                            <nav id="dropdown">
+                                <ul>
+                                  {% for child in menu_root.not_deleted_children %}
+                                    {% if request.path|cut:"/" == child.url|cut:"/" %}
+                                        <li class="active">
+                                    {% else %}
+                                        <li>
+                                    {% endif %}
+                                    {% if child.not_deleted_children %}
+                                            <a href="{{ child.url }}">{{ child.title }}</a>
+                                            
+                                                     <ul>
+                                                        {% for sub_child in child.not_deleted_children %}
+                                                            <li  style="">
+                                                                <a href="{{ sub_child.url }}">{{ sub_child.title }}</a>
+                                                            </li>
+                                                        {% endfor %}
+                                                        </ul>
+                                                
+
+                                           
+                                    {% else %}
+                                            <a href="{{ child.url }}">{{ child.title }}</a>
+                                    {% endif %}
+                                        </li>
+                                {% endfor %}
+                                  
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
                 </div>
-                <!-- .main nav -->
-
             </div>
         </div>
+        <!-- End mobile menu -->
     </header>
-    <!-- .main-header -->
+    <!--==================================================
+            End Header area
+    ==================================================-->
 
-{% block content %}
-{% endblock content %}
-    <!-- logo & social -->
-    <section class="blue-background">
-        <div class="container">
-            <div class="row">
-
-                <!-- logo -->
-                <div class="col-md-6 col-xs-6 text-left">
-
-                </div>
-                <!-- .logo -->
-
-                <!-- social -->
-                <div class="col-md-6 col-xs-6 text-right">
-                    <ul class="social list-inline list-unstyled">
-                        <li><a href="#"><i class="fa fa-twitter-square"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-facebook-square"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-google-plus-square"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- .social -->
-
-            </div>
+ {% block content %}
+        {% endblock %}
+    
+    <!--==================================================
+            Start Footer Area
+    ==================================================-->
+    <div class="footer-area">
+        
+        <div class="footer-bottom-area">
+            <p>
+                Copyright © 2017, Website Powered by 
+                <a href="http://prixa.org">Prixa</a>
+            </p>
         </div>
-    </section>
-    <!-- .logo & social -->
+    </div>
+    <!--==================================================
+            End Footer Area
+    ==================================================-->
 
+    <!-- Vendor js -->
+    <script src="{% static 'js/vendor/jquery-1.12.1.min.js' %}"></script>
 
-    <!-- footer -->
-    <footer class="dark-background">
-        <div class="container">
-            <div class="row">
+    <!-- Bootstrap js -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
 
-                <!-- footer menu -->
-                <div class="col-md-8 col-xs-8 text-left">
-                </div>
-                <!-- footer menu -->
+    <!-- Mean menu -->
+    <script src="{% static 'js/jquery.meanmenu.min.js' %}"></script>
 
-                <!-- copyrights -->
-                <div class="col-md-4 col-xs-4 text-left">
-                    Society of Public Health Engineers, Nepal<br/>
-                    (SOPHEN)<br>
-                    P.O.Box: 24006, Panipokhari, Kathmandu Nepal<br>
-                    Tel: 977-1-4006650, 016208276<br>
-                    E-mail: info@sophen.org.np
-                    www.sophen.org.np
-                </div>
-                <!-- .copyrights -->
-            </div>
-        </div>
-    </footer>
-    <!-- .footer -->
-    {% include 'layouts/frontend/include/javascript.html' %}
+    <!-- owl carousel js -->
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+
+    <!-- owl carousel js -->
+    <script src="{% static 'js/jquery.mixitup.min.js' %}"></script>
+
+    <!-- wow js -->
+    <script src="{% static 'js/wow.js' %}"></script>
+
+    <!-- easing js -->
+    <script src="{% static 'js/jquery.easing.min.js' %}"></script>
+
+    <!-- waypoint -->
+    <script src="{% static 'js/waypoints.min.js' %}"></script>
+
+    <!-- waypoint -->
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+
+    <!--  Google map api  -->
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+
+    <!-- countdown -->
+    <script src="{% static 'js/jquery.countdown.js' %}"></script>
+
+    <!-- main js -->
+    <script src="{% static 'js/main.js' %}"></script>
+    <script type="text/javascript" data-cfasync="false" src="//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js" data-shr-siteid="3b67c4f0dfc095e6208cd2c49002ff39" async="async"></script>
+        
     {% block extra_js %}
-    {% endblock extra_js%}
-
-
+    {% endblock extra_js %}
 </body>
 
 </html>

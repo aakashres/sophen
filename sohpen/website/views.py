@@ -21,6 +21,8 @@ class HomeMixin(object):
     def get_context_data(self, **kwargs):
         context = super(HomeMixin, self).get_context_data(**kwargs)
         context['menu_root'] = Menu.get_root()
+        context['latest_posts'] = Page.objects.filter(deleted_at=None).order_by('-created_at')[:3]
+        
         return context
 
 

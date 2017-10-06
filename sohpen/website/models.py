@@ -222,6 +222,7 @@ class Timestampable(models.Model):
 
 class Page(Timestampable):
     title = models.CharField(max_length=255)
+    title_photo = models.ImageField('Title Photo', null=True, blank=True)
     slug = models.SlugField(unique=True)
     description = RichTextField()
 

@@ -1,309 +1,1027 @@
 {%extends 'layouts/frontend/base.html' %}
 {% load staticfiles%}
 {% block content %}
-    <!-- slider -->
-    <aside>
-
-        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
-
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-                {% if slider_photos %}
-                {% for photo in slider_photos %}
-                <!-- 1 -->
-                <div class="item {% if forloop.counter == 1%}active{% endif %}">
-
-                    <img src="{{photo.photo.url}}" alt="" title="" height="300px" />
-
-                    <div class="carousel-caption">
-                        <div class="carousel-content-wrapper">
-                            <div class="carousel-content slide-content">
-                                <p>{{photo.label}}</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- .1 -->
-                {% endfor %}
-                {% else %}
-                <!-- 1 -->
-                <div class="item active">
-
-                    <img src="{% static 'frontend/images/slide_1.png' %}" alt="" title="" />
-
-                    <div class="carousel-caption">
-                        <div class="carousel-content-wrapper">
-                            <div class="carousel-content slide-content">
-                                <h3>Charity Fundrising</h3>
-                                <p>Donate to help everyone who needs help</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- .1 -->
-                {% endif %}
-
-            </div>
-            <!-- /Wrapper for slides .carousel-inner -->
-
-            <!-- Controls -->
-            <div class="control-box">
-                <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="fa fa-angle-left"></i></a>
-                <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="fa fa-angle-right"></i></a>
-            </div>
-            <!-- /.control-box -->
-
-
-        </div>
-        <!-- /#myCarousel -->
-
-    </aside>
-    <!-- .slider -->
-    <!-- upcoming event -->
-    <section class="up-event">
+    <!--==================================================
+            Start Banner area
+    ==================================================-->
+    <div class="banner-area">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-
-                    <!-- box -->
-                    <div class="box-wrapper">
-                        <div class="box clearfix">
-
-                            <!-- upcoming event -->
-                            <div class="upcoming-event">
-                                <div class="event-icon">
-                                    <i class="fa fa-calendar"></i>
-                                </div>
-                                <div class="event-title">
-                                    <h3><a href="/event/{{event.slug}}">{{event.title}}</a>
-                                    </h3>
-                                </div>
-
-                                <div class="event-counter pull-right">
-
-                                    <div class="yourCountdownContainer" style="font-size:25px;" padding="20px;">
-
+                <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12">
+                    <div class="banner-slider">
+                        <div class="single-banner-slider">
+                            <div class="banner-table">
+                                <div class="banner-cell">
+                                    <div class="banner-title">
+                                        <h1>
+                                            Water, Environment and Climate Change
+                                            <span>conference - 2018</span>
+                                        </h1>
+                                    </div>
+                                    <div class="banner-countdown">
+                                        <ul>
+                                            <li>
+                                                <div class="deal-counting">
+                                                    <div class="countdown-timer"></div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="banner-link">
+                                        <a href="/conference-membership" class="btntype-1">Register Now</a>
+                                        <a href="" class="btntype-1">Learn More</a>
                                     </div>
                                 </div>
                             </div>
-                            <!-- .upcoming event -->
-
+                        </div>
+                        
+                        <div class="single-banner-slider">
+                            
                         </div>
                     </div>
-                    <!-- .box -->
-
                 </div>
             </div>
         </div>
-    </section>
-    <!-- .upcoming-event -->
-    <!-- intro -->
-       <section class="box-section">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="full-promo text-center">
-                                <h2>
-                                    <strong>Register for Conference</strong>
-                                </h2>
-                                <h6>Water, Environment and Climate Change: Knowledge Sharing and Partnership</h6>
-                                <a class="button-normal blue" href="/conference-membership">Register NOW</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-    <section>
+    </div>
+    <!--==================================================
+            End Banner area
+    ==================================================-->
+
+
+    <!--==================================================
+            Start AboutEvent area
+    ==================================================-->
+    <div class="about-event-area">
+        <div class="pattern-top">
+            <div class="patter-inner">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
+        <div class="pattern-bottom">
+            <div class="patter-inner">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="promo-box heading text-center">
-                        <h2>Introduction</h2>
-                        <hr />
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 same">
+                    <div class="ab-event-detail">
+                        <div class="section-title">
+                            <p>
+                               Water Environment and Climate Change
+                            </p>
+                            <h2>
+                                 Knowledge Sharing and Partnership
+                            </h2>
+                        </div>
+                        <div class="ab-event-desc" style="text-align: justify;">
+                            <p>The high increase rates of population in the developing world and climate change has produced more stress on the water resources affecting the environment adversely. A concern has been raised to formulate climate resilient policies for sustainable development. </p>
+
+                            <p>
+                            Despite rising awareness among the masses, there is still a gap between practicality and theoretical knowledge imparted to them. Moreover, despite warning from the experts, there is a lack of coordination between scientific knowledge and best practices suited for water resources and environmental management. 
+                             Keeping in mind the challenges posed to the country at large for water, environment and climate change, the theme has been zeroed down to- “Water, Environment and Climate Change: Knowledge Sharing and Partnership.”
+                            </p>
+                        </div>
+                        <div class="ab-event-link">
+                            <a href="about.html" class="btntype-1">Read More</a>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-12">
-                    <!-- content -->
-                    <div class="content-wrapper">
-                        <div class="content">
-                            <!-- excerpt -->
-                            <div class="excerpt">
-                                <p>Water sources are constantly drying up causing sever scarcity of drinking water
-                                due to increased urbanization and industralization. The effect of pollution, contamination and environmental degradation on long term quality of life is of growing concern. These issues related to water, sanitation and hygiene must be addressed and highlighted to raise awareness among the people, society and goverment.</p>
-                                <p>Society of Public Health Engineers, Nepal(SOPHEN) was estabilshed in 1990 AD (2047 B.S.) as an independent professional organization of water, sanitation and public helth engineers. At present SOPHEN has nearly 400 members and most of them are life members of the Society.</p>
-                                <p>SOPHEN is governed by Executive Committee of  members elected by the general members of the society. The Executive Committee supported by various and directives of the General Body executes day to day function.</p>
-                                <p>Some of the major responsibilities of SOPHEN include the enhancement of the technical and professional competency of the members; work for the protection og the basic professional rights of its members and the support for the goverment and other agencies in the formulation of the policies or strategies and implementation of program in the area of public health.</p>
-                                <p>SOPHEN is committed to carry out various professional activities that are intended to bring qualitative results to remove the sanitary and environmental conditions of the country . It aims to work in association with other professional bodies in the area of water supply, sanitation, public health and environment.</p>
-                            </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 same">
+                    <div class="ab-event-single-img-top ab-event-same-style ">
+                        <ul>
+                            <li>
+                                <a class="image-popup" href="{% static 'img/about-event/01.jpg' %}" title="">
+                                    <img src="{% static 'img/about-event/01.jpg' %}" alt="img">
+                                    <span class="thumbnail-overlay"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ab-event-single-img-bottom ab-event-same-style clearfix">
+                        <ul>
+                            <li>
+                                <a class="image-popup" href="{% static 'img/about-event/02.jpg' %}" title="">
+                                    <img src="{% static 'img/about-event/02.jpg' %}" alt="img">
+                                    <span class="thumbnail-overlay"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="image-popup" href="{% static 'img/about-event/03.jpg' %}" title="">
+                                    <img src="{% static 'img/about-event/03.jpg' %}" alt="img">
+                                    <span class="thumbnail-overlay"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--==================================================
+            End AboutEvent area
+    ==================================================-->
 
-                        </div>
+
+    <!--==================================================
+            Start EventSchedule area
+    ==================================================-->
+    <div class="eventschedule-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="section-title">
+                        <p>Our event</p>
+                        <h2>Event Schedule</h2>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
-                    <div class="promo-box heading text-center">
-                        <h2>Vision</h2>
-                        <hr />
+                <div class="timeline-area">
+                    <div class="col-lg-2 col-lg-offset-1 col-md-3 col-md-offset-1 col-sm-3 col-xs-12">
+                        <ul class="tabmenu">
+                            <li style="margin-bottom: 23px !important;" class="active">
+                                <div class="schedule-date">
+                                    <a href="#home" arFia-controls="home"  data-toggle="tab">Day 1</a>
+                                </div>
+                            </li>
+                            <li style="margin-bottom: 23px !important;">
+                                <div class="schedule-date">
+                                    <a href="#profile" aria-controls="profile"  data-toggle="tab">day 2</a>
+                                </div>
+                            </li>
+                            <li style="margin-bottom: 23px !important;">
+                                <div class="schedule-date">
+                                    <a href="#messages" aria-controls="messages"  data-toggle="tab">day 3</a>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-                <div class="col-md-12">
-                    <!-- content -->
-                    <div class="content-wrapper">
-                        <div class="content">
-                            <!-- excerpt -->
-                            <div class="excerpt">
-                                <p>SOPHEN is established with the vision of:</p>
-                                <ol>
-                                <li> protecting professional rights.</li>
-                                <li>enhancing professional development.</li>
-                                <li>improving technology by providing forum for knowledge sharing among professional working in the field of public health and</li>
-                                <li>overall development of the country through progress Public Health engineering sector thereby creating clean, green, open and dynamic society in which people have access to safe, adequate water and sanitation in healthy environment.</li>
-                                </ol>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="promo-box heading text-center">
-                        <h2>Mission</h2>
-                        <hr />
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <!-- content -->
-                    <div class="content-wrapper">
-                        <div class="content">
-                            <!-- excerpt -->
-                            <div class="excerpt">
-                                <p>The mission of SOPHEN is to contribue towards the enhancement of an inproved urban and rular environment.</p>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            </div>
-            </section>
-            <section class="box-section">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="full-promo text-center">
-                                <h2>
-                                    <strong>Join Us</strong>
-                                </h2>
-                                <h6>We have more than 500 active members. Become a part of an elite community.</h6>
-                                <a class="button-normal blue" href="/membership">JOIN NOW</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section>
-            <div class="container">
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="promo-box heading text-center">
-                        <h2>Objectives</h2>
-                        <hr />
-                    </div>
-                </div>
-
-                <div class="col-md-12">
-                    <!-- content -->
-                    <div class="content-wrapper">
-                        <div class="content">
-                            <!-- excerpt -->
-                            <div class="excerpt">
-                                <p>SOPHEN has the following objectives:</p>
-                                <ul>
-                                <li>Dissemintation of state of art technology among engineers, practioners, policymakers and communities.</li>
-                                <li>Capacity building of engineers through various training, seminars, talk programs and workshop etc.</li>
-                                <li>Establishment of linkage with national and international agencies and joint effort towards Research and Development (R&D) works.</li>
-                                <li>Help raise awareness among stakeholders regarding water, sanitation and environment.</li>
-                                <li>Support Goverment to formulate and implement the policies and strategies for development of water and sanitation sector.</li>
-                                <li>Provide technical counselling services as and when required.</li>
-                                <li>Organizing exchange visits (Local and International)</li>
-                                <li>Conducting and supporting research and development program activities.</li>
-                                </ul>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="promo-box heading text-center">
-                            <h2>Activities</h2>
-                            <hr />
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <!-- content -->
-                        <div class="content-wrapper">
-                            <div class="content">
-                                <!-- excerpt -->
-                                <div class="excerpt">
+                    <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12">
+                        <div class="tab-content">
+                            <ul class="tab-pane active fade in secondRow" id="home">
+                                <li>
                                     <ul>
-                                    <li>Celebrating World Water Day.</li>
-                                    <li>Celebrating World Environment Day.</li>
-                                    <li>Celebrating World Toiled Day.</li>
-                                    <li>Conduct Seminars, Workshops, Talk Programs and Public Awareness Programs.</li>
-                                    <li>Annual publication of technical journal "SOPHEN"</li>
-                                    <li>Design and implenent water, sanitation and environmental projects.</li>
+                                        
+                                        <li>
+                                            <div class="schedule-details" style="padding-left:20px;">
+                                                <div class="schedule-meta">
+                                                    <a href="#">
+                                                        <i class="icofont icofont-clock-time" ></i>
+                                                        9:00 am - 11:00 am
+                                                    </a>
+                                                    <a href="#">
+                                                        <i class="icofont icofont-location-pin"></i>
+                                                        Kathmandu, Nepal
+                                                    </a>
+                                                </div>
+                                                <div class="schedule-title">
+                                                    <a href="event-schedule.html">
+                                                        <h4>Water Resource  and Sustainable Development</h4>
+                                                    </a>
+                                                </div>
+                                                
+                                            </div>
+                                        </li>
                                     </ul>
-                                </div>
+                                </li>
 
-                            </div>
+                                <li>
+                                    <ul>
+                                        
+                                        <li>
+                                            <div class="schedule-details" style="padding-left:20px;">
+                                                <div class="schedule-meta">
+                                                    <a href="#">
+                                                        <i class="icofont icofont-clock-time" ></i>
+                                                        11:00 am - 1:00 pm
+                                                    </a>
+                                                    <a href="#">
+                                                        <i class="icofont icofont-location-pin"></i>
+                                                        Kathmandu, Nepal
+                                                    </a>
+                                                </div>
+                                                <div class="schedule-title">
+                                                    <a href="event-schedule.html">
+                                                        <h4>Waste water management and Environmental Economics</h4>
+                                                    </a>
+                                                </div>
+                                                
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <ul>
+                                        
+                                        <li>
+                                            <div class="schedule-details" style="padding-left:20px;">
+                                                <div class="schedule-meta">
+                                                    <a href="#">
+                                                        <i class="icofont icofont-clock-time" ></i>
+                                                        1:00 pm - 3:00 pm
+                                                    </a>
+                                                    <a href="#">
+                                                        <i class="icofont icofont-location-pin"></i>
+                                                        Kathmandu, Nepal
+                                                    </a>
+                                                </div>
+                                                <div class="schedule-title">
+                                                    <a href="event-schedule.html">
+                                                        <h4>Environmental and Social Impact of Climate Change</h4>
+                                                    </a>
+                                                </div>
+                                                
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+                                
+                            </ul>
+                            <ul class="tab-pane fade in secondRow" id="profile">
+                                <li>
+                                    <ul>
+                                        
+                                        <li>
+                                            <div class="schedule-details" style="padding-left:20px;">
+                                                <div class="schedule-meta">
+                                                    <a href="#">
+                                                        <i class="icofont icofont-clock-time" ></i>
+                                                        9:00 am - 11:00 am
+                                                    </a>
+                                                    <a href="#">
+                                                        <i class="icofont icofont-location-pin"></i>
+                                                        Kathmandu, Nepal
+                                                    </a>
+                                                </div>
+                                                <div class="schedule-title">
+                                                    <a href="event-schedule.html">
+                                                        <h4>Water Resource  and Sustainable Development</h4>
+                                                    </a>
+                                                </div>
+                                                
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <ul>
+                                        
+                                        <li>
+                                            <div class="schedule-details" style="padding-left:20px;">
+                                                <div class="schedule-meta">
+                                                    <a href="#">
+                                                        <i class="icofont icofont-clock-time" ></i>
+                                                        11:00 am - 1:00 pm
+                                                    </a>
+                                                    <a href="#">
+                                                        <i class="icofont icofont-location-pin"></i>
+                                                        Kathmandu, Nepal
+                                                    </a>
+                                                </div>
+                                                <div class="schedule-title">
+                                                    <a href="event-schedule.html">
+                                                        <h4>Waste water management and Environmental Economics</h4>
+                                                    </a>
+                                                </div>
+                                                
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <ul>
+                                        
+                                        <li>
+                                            <div class="schedule-details" style="padding-left:20px;">
+                                                <div class="schedule-meta">
+                                                    <a href="#">
+                                                        <i class="icofont icofont-clock-time" ></i>
+                                                        1:00 pm - 3:00 pm
+                                                    </a>
+                                                    <a href="#">
+                                                        <i class="icofont icofont-location-pin"></i>
+                                                        Kathmandu, Nepal
+                                                    </a>
+                                                </div>
+                                                <div class="schedule-title">
+                                                    <a href="event-schedule.html">
+                                                        <h4>Environmental and Social Impact of Climate Change</h4>
+                                                    </a>
+                                                </div>
+                                                
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="tab-pane fade in secondRow" id="messages">
+                                <li>
+                                    <ul>
+                                        
+                                        <li>
+                                            <div class="schedule-details" style="padding-left:20px;">
+                                                <div class="schedule-meta">
+                                                    <a href="#">
+                                                        <i class="icofont icofont-clock-time" ></i>
+                                                        9:00 am - 11:00 am
+                                                    </a>
+                                                    <a href="#">
+                                                        <i class="icofont icofont-location-pin"></i>
+                                                        Kathmandu, Nepal
+                                                    </a>
+                                                </div>
+                                                <div class="schedule-title">
+                                                    <a href="event-schedule.html">
+                                                        <h4>Water Resource  and Sustainable Development</h4>
+                                                    </a>
+                                                </div>
+                                                
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <ul>
+                                        
+                                        <li>
+                                            <div class="schedule-details" style="padding-left:20px;">
+                                                <div class="schedule-meta">
+                                                    <a href="#">
+                                                        <i class="icofont icofont-clock-time" ></i>
+                                                        11:00 am - 1:00 pm
+                                                    </a>
+                                                    <a href="#">
+                                                        <i class="icofont icofont-location-pin"></i>
+                                                        Kathmandu, Nepal
+                                                    </a>
+                                                </div>
+                                                <div class="schedule-title">
+                                                    <a href="event-schedule.html">
+                                                        <h4>Waste water management and Environmental Economics</h4>
+                                                    </a>
+                                                </div>
+                                                
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <ul>
+                                        
+                                        <li>
+                                            <div class="schedule-details" style="padding-left:20px;">
+                                                <div class="schedule-meta">
+                                                    <a href="#">
+                                                        <i class="icofont icofont-clock-time" ></i>
+                                                        1:00 pm - 3:00 pm
+                                                    </a>
+                                                    <a href="#">
+                                                        <i class="icofont icofont-location-pin"></i>
+                                                        Kathmandu, Nepal
+                                                    </a>
+                                                </div>
+                                                <div class="schedule-title">
+                                                    <a href="event-schedule.html">
+                                                        <h4>Environmental and Social Impact of Climate Change</h4>
+                                                    </a>
+                                                </div>
+                                                
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="promo-box heading text-center">
-                            <h2>Eligibility for Membership</h2>
-                            <hr />
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <!-- content -->
-                        <div class="content-wrapper">
-                            <div class="content">
-                                <!-- excerpt -->
-                                <div class="excerpt">
-                                    <h3>General Member</h3>
-                                    <p>B. Eng. form a recognized university, institutions with three years working ecperince in the field of Water, Sanitation and Environment Engineering, or A post-graduate degree in Water or Environmental or Sanitary Engineering form any recognized institution/university.</p>
-                                    <h3>Associate Member</h3>
-                                    <p>Any individual not having the required academic qualification or any institution that has contirbuted significantly in the fiedl of sanitary/environmental engineering could be granted an Associate Members as approved by Executive Council of SOPHEN. However, the Associate member will not have any voting rights.</p>
-                                    <h3>Honorary Member</h3>
-                                    <p>The SOPHEN Executive Council may provide Honorary Membership to any individual of institution for its outstanding contributions rendered in the overall development of our society and related fields.</p>
-                                </div>
+            </div>
+        </div>
+    </div>
+    <!--==================================================
+            End EventSchedule area
+    ==================================================-->
 
+
+    <!--==================================================
+            Start Speakers area
+    ==================================================-->
+    <div class="speakers-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-xs-10">
+                    <div class="section-title">
+                        <p>Meet our specialist</p>
+                        <h2>Our speakers</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="speaker-slider-hm2">
+                        <figure class="single-speaker">
+                            <img src="{% static 'img/hm-2-speaker/01.png' %}" alt="img">
+                            <figcaption class="single-speaker-content">
+                                <div class="cap-border"></div>
+                                <div class="cap-border-2"></div>
+                                <a href="#">
+                                    <h3>Dr. Han Seung-soo</h3>
+                                </a>
+                                <p>Former Prime Minister- The Republic of Korea</p>
+                            </figcaption>
+                        </figure>
+                        <figure class="single-speaker">
+                            <img src="{% static 'img/hm-2-speaker/02.png' %}" alt="img">
+                            <figcaption class="single-speaker-content">
+                                <div class="cap-border"></div>
+                                <div class="cap-border-2"></div>
+                                <a href="#">
+                                    <h3>Mr. Araral Eduardo</h3>
+                                </a>
+                                <p>Vice-Dean, Lee Kuan Yew School of Public Policy (NUS)</p>
+                            </figcaption>
+                        </figure>
+                        <figure class="single-speaker">
+                            <img src="{% static 'img/hm-2-speaker/03.png' %}" alt="img">
+                            <figcaption class="single-speaker-content">
+                                <div class="cap-border"></div>
+                                <div class="cap-border-2"></div>
+                                <a href="#">
+                                    <h3>Ms. Yumiko Noda</h3>
+                                </a>
+                                <p>Partner, Head of PPP and Infrastructure (Asia Pacific)</p>
+                            </figcaption>
+                        </figure>
+                        <figure class="single-speaker">
+                            <img src="{% static 'img/hm-2-speaker/4.png' %}" alt="img">
+                            <figcaption class="single-speaker-content">
+                                <div class="cap-border"></div>
+                                <div class="cap-border-2"></div>
+                                <a href="#">
+                                    <h3>Dr. Bindu N. Lohani</h3>
+                                </a>
+                                <p>VP, Knowledge Management and Sustainable Development, ADB</p>
+                            </figcaption>
+                        </figure>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--==================================================
+            End Speakers area
+    ==================================================-->
+
+    <!--==================================================
+            Start Subscribe area
+    ==================================================-->
+    <div class="subscribe-area">
+        <div class="pattern-top">
+            <div class="patter-inner">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
+        <div class="pattern-bottom">
+            <div class="patter-inner">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
+                    <div class="subscribe-detail">
+                        <h1>become a part of our event</h1>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-xs-12">
+                            <div class="subscribe-form">
+                                <form action="#">
+                                   
+                                    <button type="submit">Register</button>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <!--==================================================
+            End Subscribe area
+    ==================================================-->
+
+
+    <!--==================================================
+            Start Pricing area
+    ==================================================-->
+    <div class="pricing-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4">
+                    <div class="section-title">
+                        <p>Participation Costs</p>
+                        <h2>our pricing</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="single-price">
+                        <div class="pricing-title" >
+                            <h4 style="line-height: 25px;">Institutional Participants<br/>(Nepal)</h4>
+                        </div>
+                        <div class="pricing-price-month">
+                            <p>
+                                <sup>NPR</sup>
+                                10,000 
+                                
+                            </p>
+                        </div>
+                        <div class="pricing-list">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <span>
+                                            <i class="icofont icofont-thin-right "></i>
+                                        </span>
+                                        Conference Kit
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span> 
+                                            <i class="icofont icofont-thin-right "></i>
+                                        </span>
+                                        High Tea
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span> 
+                                            <i class="icofont icofont-thin-right "></i>
+                                        </span>
+                                        Lunch
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span> 
+                                            <i class="icofont icofont-thin-right "></i>
+                                        </span>
+                                        Evening Tea
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span> 
+                                            <i class="icofont icofont-thin-right "></i>
+                                        </span>
+                                        Conference dinner
+                                    </a>
+                                </li>
+                                 <li>
+                                    <a href="#">
+                                        <span> 
+                                            <i class="icofont icofont-thin-right "></i>
+                                        </span>
+                                        Publication in Journal
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                       
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="single-price">
+                        <div class="pricing-title">
+                             <h4 style="line-height: 25px;">Institutional Participants<br/>(International)</h4>
+                        </div>
+                        <div class="pricing-price-month">
+                            <p>
+                                <sup>$</sup>
+                                200 
+                                
+                            </p>
+                        </div>
+                        <div class="pricing-list">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <span>
+                                            <i class="icofont icofont-thin-right "></i>
+                                        </span>
+                                        Conference Kit
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span> 
+                                            <i class="icofont icofont-thin-right "></i>
+                                        </span>
+                                        High Tea
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span> 
+                                            <i class="icofont icofont-thin-right "></i>
+                                        </span>
+                                        Lunch
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span> 
+                                            <i class="icofont icofont-thin-right "></i>
+                                        </span>
+                                        Evening Tea
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span> 
+                                            <i class="icofont icofont-thin-right "></i>
+                                        </span>
+                                        Conference dinner
+                                    </a>
+                                </li>
+                                 <li>
+                                    <a href="#">
+                                        <span> 
+                                            <i class="icofont icofont-thin-right "></i>
+                                        </span>
+                                        Publication in Journal
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                       
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="single-price">
+                        <div class="pricing-title">
+                             <h4 style="line-height: 25px;">Individual Participant<br/>(Nepal)</h4>
+                        </div>
+                        <div class="pricing-price-month">
+                            <p>
+                                <sup>NPR</sup>
+                                5000 
+                                
+                            </p>
+                        </div>
+                        <div class="pricing-list">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <span>
+                                            <i class="icofont icofont-thin-right "></i>
+                                        </span>
+                                        Conference Kit
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span> 
+                                            <i class="icofont icofont-thin-right "></i>
+                                        </span>
+                                        High Tea
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span> 
+                                            <i class="icofont icofont-thin-right "></i>
+                                        </span>
+                                        Lunch
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span> 
+                                            <i class="icofont icofont-thin-right "></i>
+                                        </span>
+                                        Evening Tea
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span> 
+                                            <i class="icofont icofont-thin-right "></i>
+                                        </span>
+                                        Conference dinner
+                                    </a>
+                                </li>
+                                 <li>
+                                    <a href="#">
+                                        <span> 
+                                            <i class="icofont icofont-thin-right "></i>
+                                        </span>
+                                        Publication in Journal
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="single-price">
+                        <div class="pricing-title">
+                              <h4 style="line-height: 25px;">Individual Participant<br/>(International)</h4>
+                        </div>
+                        <div class="pricing-price-month">
+                            <p>
+                                <sup>$</sup>
+                                400
+                                
+                            </p>
+                        </div>
+                        <div class="pricing-list">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <span>
+                                            <i class="icofont icofont-thin-right "></i>
+                                        </span>
+                                        Conference Kit
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span> 
+                                            <i class="icofont icofont-thin-right "></i>
+                                        </span>
+                                        High Tea
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span> 
+                                            <i class="icofont icofont-thin-right "></i>
+                                        </span>
+                                        Lunch
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span> 
+                                            <i class="icofont icofont-thin-right "></i>
+                                        </span>
+                                        Evening Tea
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span> 
+                                            <i class="icofont icofont-thin-right "></i>
+                                        </span>
+                                        Conference dinner
+                                    </a>
+                                </li>
+                                 <li>
+                                    <a href="#">
+                                        <span> 
+                                            <i class="icofont icofont-thin-right "></i>
+                                        </span>
+                                        Publication in Journal
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--==================================================
+            End Pricing area
+    ==================================================-->
+
+    <!--==================================================
+            Start upcoming events area
+    ==================================================-->
+    
+    <!--==================================================
+            End upcoming events area
+    ==================================================-->
+
+    <!--==================================================
+            End Faq area
+    ==================================================-->
+    
+    <!--==================================================
+            End Faq area
+    ==================================================-->
+
+
+    <!--==================================================
+            Start Blog area
+    ==================================================-->
+    <div class="blog-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-md-offset-4">
+                    <div class="section-title">
+                        <p>Updates</p>
+                        <h2>latest posts</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for indPost in latest_posts %}
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <figure class="single-blog-item">
+                        <div class="post-thumbnail">
+                            <a class="image-popup" href="/page/{{indPost.slug}}" title="">
+                                {% if indPost.title_photo %}
+                                <img src="{{indPost.title_photo.url}}" alt="img">
+                                {% else %}
+                                <img src="{% static 'img/blog/01.jpg' %}" alt="img">
+
+                                {% endif %}
+                                <span class="thumbnail-overlay"></span>
+                            </a>
+                        </div>
+                        <div class="post-time">
+                            <a href="#">
+                                <p>
+                                    {{indPost.created_at.day}}
+                                    
+                                    <span>{{indPost.created_at|date:'b'|truncatechars:3}}</span>
+                                </p>
+                            </a>
+                        </div>
+                        <figcaption class="blog-detail">
+                            <div class="post-title">
+                                <a href="/page/{{indPost.slug}}">
+                                    <h4>{{indPost.title}}</h4>
+                                </a>
+                            </div>
+                            
+                        </figcaption>
+                    </figure>
+                </div>
+                {% endfor %}
+                
+                
+            </div>
+        </div>
+    </div>
+    <!--==================================================
+            End Blog area
+    ==================================================-->
+
+    <div class="faq-area">
+        <div class="container">
+            <div class="row"> 
+                <div class="col-lg-6 col-md-6 col-sm-5 col-xs-12 align-middle">
+                    <div class="about-feature-img">
+                        <img src="{% static 'img/faq/01.png' %}" alt="img">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-7 col-xs-12 align-middle">
+                    <div class="section-title">
+                        <p>Questions</p>
+                        <h2>Frequently Asked Questions</h2>
+                    </div>
+                    <div class="faq-main-content">
+                        <div class="faq-panel-group" id="accordion">
+                            <div class="panel faq-panel question-one shadow">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#question-one">
+                                    <div class="question-ask-panel-title">
+                                        <p>When is the deadline for Abstract Submission?</p>
+                                        <i class="icofont icofont-minus open-accordion"></i>
+                                        <i class="icofont icofont-plus close-accordion"></i>
+                                    </div>
+                                </a>
+                                <div id="question-one" class="panel-collapse collapse in">
+                                    <div class="faq-panel-body">
+                                        <p>We will accept submissions for abstract till 31st October, 2017.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- faq-panel end -->
+                            <div class="panel faq-panel">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#question-two" class="collapsed">
+                                    <div class="question-ask-panel-title">
+                                        <p>What happens if I submit the abstract after the deadline ?</p>
+                                        <i class="icofont icofont-minus open-accordion"></i>
+                                        <i class="icofont icofont-plus close-accordion"></i>
+                                    </div>
+                                </a>
+                                <div id="question-two" class="panel-collapse collapse">
+                                    <div class="faq-panel-body">
+                                        <p>You are free to submit your abstract a few days from the deadline. We may consider your paper into our conference.​</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- faq-panel end -->
+                            <div class="panel faq-panel">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#question-three" class="collapsed">
+                                    <div class="question-ask-panel-title">
+                                        <p>Is there any policy for waiving the Registration Fee ?</p>
+                                        <i class="icofont icofont-minus open-accordion"></i>
+                                        <i class="icofont icofont-plus close-accordion"></i>
+                                    </div>
+                                </a>
+                                <div id="question-three" class="panel-collapse collapse">
+                                    <div class="faq-panel-body">
+                                        <p>Depending on the Research Paper/Work, we can waive the registration fee for a limited entries. Please contact through our official mail for the same. </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- faq-panel end -->
+                            <div class="panel faq-panel">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#question-four" class="collapsed">
+                                    <div class="question-ask-panel-title">
+                                        <p>Is there any additional event accompanying the main event?</p>
+                                        <i class="icofont icofont-minus open-accordion"></i>
+                                        <i class="icofont icofont-plus close-accordion"></i>
+                                    </div>
+                                </a>
+                                <div id="question-four" class="panel-collapse collapse">
+                                    <div class="faq-panel-body">
+                                        <p>Yes, we indeed have an Exhibition event and various Side Events on related topics.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--==================================================
+                Start Partner Area
+    ==================================================-->
+    <section class="partner-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="section-title">
+                        
+                        <h2>THE ORGANIZERS</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="single-partner">
+                        <a href="#">
+                            <img src="{% static 'img/partner/partner-1.png' %}" alt="img">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="single-partner">
+                        <a href="#">
+                        <img src="{% static 'img/partner/partner-2.png' %}" alt="img">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="single-partner">
+                        <a href="#">
+                            <img src="{% static 'img/partner/partner-3.png' %}" alt="img">
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
     </section>
+    <!--==================================================
+            End Partner Area
+    ==================================================-->
+
     <!-- .intro -->
 {% endblock %}
 
 {% block extra_js %}
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/easy-countdown/2.2.0/jquery.countdown.min.js"></script>
 <script type="text/javascript">
-$(function() {
-    $('.yourCountdownContainer').countdown({
-        date: "{{event.event_date|date:'m/d/Y H:i'}}:00"
+        $(function(){
+            $('.countdown-timer').countdown('2018/04/10', function (event) {
+        $(this).html(event.strftime('<ul><li>%D<span>Days</span></li><li>%H<span>Hours</span></li><li>%M<span>Mins</span></li><li>%S<span>Secs</span></li><ul>'));
+        });
+        
     });
-});
-</script>
+    </script>
 {% endblock extra_js %}
