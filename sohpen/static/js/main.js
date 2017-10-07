@@ -280,7 +280,7 @@
 		var marker = new google.maps.Marker({
 			position: myCenter,
 			animation: google.maps.Animation.BOUNCE,
-			icon: 'img/map-marker.png'
+			icon: '/static/img/map-marker.png'
 		});
 		marker.setMap(map);
 	}
