@@ -141,8 +141,8 @@
 	//Initialize wow
 	new WOW().init();
 	
-	//google map
-	var googleMapSelector = $('#contactgoogleMap'),
+	$(function(){
+		var googleMapSelector = $('#contactgoogleMap'),
 		myCenter = new google.maps.LatLng(27.72834042497272,85.32356565346346);
 
 	function initialize() {
@@ -287,6 +287,10 @@
 	if (googleMapSelector.length) {
 		google.maps.event.addDomListener(window, 'load', initialize);
 	}
+	});
+	//google map
+	
+	
 	
 	//window load function
 	$(window).on('load',function () {
