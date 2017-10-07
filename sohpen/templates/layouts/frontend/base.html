@@ -54,11 +54,36 @@
 
 
 <body class="home2">
+
     <div id="preloader">
         <div class="preloader-content">
             <img src="{% static 'img/preloader.gif' %}" alt=""> 
         </div>
     </div>
+
+{% if messages %}
+    <div class="modal fade">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Thank You!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      {% for message in messages %}
+        <p>{{message}}</p>
+        
+      {% endfor %}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
     <!--==================================================
             Start Header area
     ==================================================-->

@@ -403,7 +403,7 @@ class ConferenceMembershipView(SuccessMessageMixin, HomeMixin, View):
         if form.is_valid():
             category = form.save(commit=False)
             category.save()
-            messages.success(request, "Registration Successful !")
+            messages.success(request, "Registration Successful! We will reach out to you soon.")
             msg = 'Dear '+category.full_name+', <br/>Your request for the registration has been submitted successfully. We will reach out to you soon, with additional details. Thank You. <br/><br/>Best Regards,<br/>Conference Organization Committee'
 
             send_mail('Thank You for Registration', '', 'no-reply@sophen.org', [category.email], fail_silently=True, html_message=msg)
