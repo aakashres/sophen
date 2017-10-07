@@ -28,6 +28,8 @@ class HomeMixin(object):
 
 class Dashboard(LoginMixin, TemplateView):
     template_name = "dashboard.html"
+    
+
 
 
 class TestFrontend(HomeMixin, TemplateView):
@@ -316,6 +318,12 @@ class FileListView(LoginMixin, ListView):
     def get_queryset(self):
         return File.objects.filter(deleted_at=None)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['menu_root'] = Menu.get_root()
+        context['title'] = 'Downloads'
+        return context
+
 
 class FileUpdateView(LoginMixin, SuccessMessageMixin, UpdateView):
     model = File
@@ -344,6 +352,12 @@ class MemberListView(LoginMixin, ListView):
 class FrontendPageDetailView(HomeMixin, DetailView):
     model = Page
     template_name = 'website/frontendPageDetail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['menu_root'] = Menu.get_root()
+        context['title'] = self.object.title
+        return context
 
 
 class HomeView(HomeMixin, TemplateView):
@@ -396,7 +410,7 @@ class ConferenceMembershipView(SuccessMessageMixin, HomeMixin, View):
 
     def get(self, request, *args, **kwargs):
         addCatForm = ConferenceMemberForm()
-        return render(request, self.template_name, {'form': addCatForm})
+        return render(request, self.template_name, {'form': addCatForm, 'title':'Register for Conference'})
 
     def post(self, request, *args, **kwargs):
         form = ConferenceMemberForm(request.POST, request.FILES)
@@ -430,6 +444,7 @@ class ContactView(HomeMixin, View):
         context = {
             'form': form,
             'menu_root': menu_root,
+            'title': 'Contact Us'
         }
         return render(request, 'website/contact.html', context)
 
