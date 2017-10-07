@@ -35,33 +35,36 @@
                         <h2>SEND US A MESSAGE</h2>
                     </div>
                     <div class="section-content">
-                        <p>Eum iriure dolor in hendrerit in vulputate velit esse molestie consequat vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore.</p>
+                        <p>To contact us, please fill in the form below.</p>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
                     <div class="contact-page-form">
-                        <form action="#">
-                            <div class="form-group-left">
+                        <form action="" method="POST">
+                        {% csrf_token %}
+                            <div class="col-md-12">
+                                
+
+                                    <div class="form-group">
+                                            <label>Your name</label>
+                                            {{form.name}}
+                                        </div>
+                                
                                 <div class="form-group">
-                                    <input type="text" placeholder="name">
-                                </div>
+                                            <label>Your Subject</label>
+                                            {{form.subject}}
+                                        </div>
                                 <div class="form-group">
-                                    <input type="text" placeholder="phone">
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" placeholder="email">
-                                </div>
+                                            <label>Your Message</label>
+                                            {{form.message}}
+                                        </div>
+                                        <div class="form-group">
+                                           <input type="submit" value="Submit"/>
+                                        </div>
                             </div>
-                            <div class="form-group-right">
-                                <div class="form-group">
-                                    <textarea name="#" placeholder="Messages"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <input type="submit" value="Send Message">
-                                </div>
-                            </div>
+                            
                         </form>
                     </div>
                 </div>
