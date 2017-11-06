@@ -1,6 +1,25 @@
 {%extends 'layouts/frontend/base.html' %}
 {% load staticfiles%}
 {% block content %}
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Date Extensions</h4>
+      </div>
+      <div class="modal-body">
+        <p><img src="{% static 'date.png' %}"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
     <!--==================================================
             Start Banner area
     ==================================================-->
@@ -1046,5 +1065,10 @@
         });
         
     });
+    </script>
+    <script type="text/javascript">
+         $(document).ready(function(){
+        $("#myModal").modal('show');
+        });
     </script>
 {% endblock extra_js %}
